@@ -5,19 +5,19 @@
 	<title>Client网页版</title>
 	<style type="text/css">
 		*{font-family: '微软雅黑';}
-		.button{background-color: #66ccff; width: 10%;font-size: 0.95em; text-align: center;}
-		.button:hover{background-color: #0F0;cursor:pointer;}
+		.button{background-color: #ccc; width: 10%;font-size: 0.95em; text-align: center;}
+		.button:hover{background-color: #b3b3b3;cursor:pointer;}
 		.list{line-height: 1em;max-width: 200px;}
 		.list p{background-color: #ccc;margin:0px auto;padding: 0.3em;}
 		.list .r1{background-color: #bababa;}.list .r0{background-color: #cbcbcb;}
 		.list p:hover{text-decoration: underline;cursor:pointer;}
-		.tle{text-indent: 20px;background-color: #837;margin: 0em;}
+		.tle{text-indent: 20px;background-color: #aaa;margin: 0em;}
 		.main p{text-indent: 20px;margin: 0;padding: 0.1em;}.main{overflow: auto;height: 600px;max-height: 600px;width: 800px;max-width: 800px;}
 		.list{overflow:auto;}
 		.main .r1{background-color: #cfcfcf;}.main .r0{background-color: #dfdfdf;}
 		::selection{background-color:#aaa;}
-		.but{width: 500px;background-color: #bbb;font-size: 1.2em;text-align: center;}
-		.but:hover{background-color: #666;cursor: pointer;}
+		.but{width: 500px;background-color: #ccc;font-size: 1.2em;text-align: center;}
+		.but:hover{background-color: #b3b3b3;cursor: pointer;}
 		.work-img{width: 1000px;display: none;background-color: #aaa;}
 		.ok{position: fixed;left: 20px;bottom:30px;background-color: #32CD32;width: 250px;height: 50px;display: none;}
 		.ok p{text-align: center;color: #ffffff;}
@@ -29,7 +29,7 @@
 	<script src="js/clipboard.js"></script>
 	<script src="js/my.js"></script>
 </head>
-<body bgcolor="#ccc" onbeforeunload="_removePlayer(name)">
+<body bgcolor="#f3f3f3" onbeforeunload="_removePlayer(name)">
 <center>
 <table style="width: 1000px;">
 	<tr style="background-color: #fff;">
@@ -46,12 +46,13 @@
 		<td>
 			<input type="text" id='ta' style="width: 99.5%;padding: 0.2em;border: 0;">
 		</td>
-		<td class="button" style="width: 200px;">Send</td>
+		<td class="button" style="width: 200px;" id="submit">Send</td>
 	</tr>
 </table>
 <table style="width: 1000px;">
 	<tr>
 		<td class="but" id="img">发图片</td>
+		<td style="width: 5px;"></td>
 		<td class="but" id="code">发代码</td>
 	</tr>
 </table>

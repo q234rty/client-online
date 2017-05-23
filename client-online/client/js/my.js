@@ -91,22 +91,25 @@ record1.subscribe('msg', function(value) {
 });
 record1.subscribe('player', function(value) {
 	var players = $('.list p');
-	var vis = new Array(); // vis[i] 表示第i个player是否出现在列表中.
+	var vis = new Array();
 	var dity = value.match(/\S{1,10}/g);
-	if(dity == null) return;
-	for(var i = 0; i < dity.length; i++)
-		vis[i] = false;
-	players.each(function () {
-		var tn = $(this).html();
+	if(dity != null){
 		for(var i = 0; i < dity.length; i++)
-			if(tn == dity[i]){
-				vis[i] = true;
-				return;
-			}
-		removePlayer(tn);
-	});
-	for(var i = dity.length-1; i >= 0; i--)
-		if(!vis[i]) addPlayer(dity[i]);
+			vis[i] = false;
+		players.each(function () {
+			var tn = $(this).html();
+			for(var i = 0; i < dity.length; i++)
+				if(tn == dity[i]){
+					vis[i] = true;
+					return;
+				}
+			removePlayer(tn);
+		});
+		for(var i = dity.length-1; i >= 0; i--)
+			if(!vis[i]) addPlayer(dity[i]);
+	}
+	if(name == '' || name == 'null')
+		setTimeout('ooll()', 500);
 });
 var ooll = function () {
 	var n = 1;
@@ -126,7 +129,6 @@ var ooll = function () {
 	});
 	record1.set('player', str);
 };
-setTimeout('ooll()', 1000);
 var hide_ok = function () {
 	$('.ok').hide('slow');
 };
@@ -136,7 +138,7 @@ var show_ok = function () {
 	});
 }
 $(document).ready(function () {
-	$(".button").click(send);
+	$("#submit").click(send);
 	$('#img').click(function () {
 		$('.work-img').toggle('slow');
 	});
