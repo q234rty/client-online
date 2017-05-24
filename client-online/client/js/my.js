@@ -16,7 +16,7 @@ var setClass = function () {
 };
 var addMassage = function (msg) {
 	var ma = $('.main');
-	var newp = $('<p/>').html(msg);
+	var newp = $('<div/>').html(msg);
 	ma.append(newp);
 	setClasses(newp);
 	var div = newp[0];
@@ -61,12 +61,16 @@ var _removePlayer = function (name) {
 	})
 	record1.set('player', str.substr(1));
 }
-var send = function () {
-	var ra = $("#ta");
-	var msg = ra.val();
-	if(msg == null || msg == '')
+var send = function (msg) {
+	if(typeof msg == 'object'){
+		var ra = $("#ta");
+		msg = ra.val();
+		if(msg == null || msg == '' || msg == 'null')
+			return;
+		ra.val('');
+	}
+	if(msg == null || msg == '' || msg == 'null')
 		return;
-	ra.val('');
 	if(msg[0] == '/'){
 		if(/^\/msg\s?/.test(msg)){
 			if(!/^\/msg \S{1,10} .+$/.test(msg)){
@@ -79,7 +83,7 @@ var send = function () {
 		}
 		else addMassage('Unknow command...');
 	}
-	else _addMassage(name+': '+msg);
+	else _addMassage('&lt;'+name+'&gt;'+msg);
 };
 record1.subscribe('msg', function(value) {
 	if(/^\S{1,10} -&gt; \S{1,10}: /.test(value)){
@@ -137,10 +141,23 @@ var show_ok = function () {
 		setTimeout('hide_ok()', 2000);
 	});
 }
+var html2Escape = function(sHtml) { 
+	return sHtml.replace(/[<>&"]/g,
+		function(c){
+			return {'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c];
+		});
+}
 $(document).ready(function () {
 	$("#submit").click(send);
 	$('#img').click(function () {
-		$('.work-img').toggle('slow');
+		if(!$('#work-code').is(':hidden'))
+			$('#work-code').hide('slow');
+		$('#work-img').toggle('slow');
+	});
+	$('#code').click(function () {
+		if(!$('#work-img').is(':hidden'))
+			$('#work-img').hide('slow');
+		$('#work-code').toggle('slow');
 	});
 	$('#img-work-1').click(function () {
 		$('#img-ans').val('<img src="'+$('#img-input-1').val()+'">');
@@ -172,15 +189,23 @@ $(document).ready(function () {
 	})
 	$('#add_before').click(function () {
 		$('.waiting').show('slow', function () {
-			$('#ta').val($('#ta').val()+$('#img-ans').val());
-			$('#img-ans').val('');
+			send('<br>'+$('#img-ans').val());
 			$('.waiting').hide('slow');
 		});
 	});
-	$('#code').click(function () {
-		alert('这部分还没做好');
-	})
+	$('#code-submit').click(function () {
+		var code = html2Escape($('#code-input').val());
+		send('<div align="center"><pre><code>'+code+'</code>'
+			+'<a href="javascript:;" class="cpy" data-clipboard-text="'+code+'">Copy</a></pre></div>');
+	});
 	document.getElementById('ta').onkeydown = function () {
-		if(event.which == 13) send();
+		if(event.which == 13){
+			send($('#ta').val());
+			$('#ta').val('');
+		}
 	};
+	var n = new Clipboard('.cpy');
+	n.on('success', function () {
+		show_ok();
+	});
 });

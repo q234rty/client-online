@@ -12,19 +12,26 @@
 		.list .r1{background-color: #bababa;}.list .r0{background-color: #cbcbcb;}
 		.list p:hover{text-decoration: underline;cursor:pointer;}
 		.tle{text-indent: 20px;background-color: #aaa;margin: 0em;}
-		.main p{text-indent: 20px;margin: 0;padding: 0.1em;}.main{overflow: auto;height: 600px;max-height: 600px;width: 800px;max-width: 800px;}
+		.main div{margin: 0;word-wrap: break-word;}.main{overflow: auto;height: 600px;max-height: 600px;width: 800px;max-width: 800px;}.main pre{position: relative;}
+		.main p{margin: 0;}
 		.list{overflow:auto;}
 		.main .r1{background-color: #cfcfcf;}.main .r0{background-color: #dfdfdf;}
 		::selection{background-color:#aaa;}
 		.but{width: 500px;background-color: #ccc;font-size: 1.2em;text-align: center;}
 		.but:hover{background-color: #b3b3b3;cursor: pointer;}
-		.work-img{width: 1000px;display: none;background-color: #aaa;}
+		.work{width: 1000px;display: none;background-color: #aaa;}
 		.ok{position: fixed;left: 20px;bottom:30px;background-color: #32CD32;width: 250px;height: 50px;display: none;}
 		.ok p{text-align: center;color: #ffffff;}
 		.waiting{position: fixed;left: 20px;bottom:30px;background-color: #66ccff;width: 250px;height: 50px;display: none;}
 		.waiting p{text-align: center;color: #ffffff;}
-		pre{width: 100%;position: relative;overflow-wrap: break-word;}
-		pre code{font-family: 'Courier New';line-height: 1em;background-color: #aaa;padding: .3125em;width: 100%;}
+		.main div div{padding: .001rem;}
+		pre{background-color: #aaa;width: 95%;text-align: left;tab-size:4;padding: .3125rem;word-wrap: break-word;white-space: pre-wrap;}
+		pre code{font-family: 'Courier New';word-wrap: break-word;}
+		pre .cpy{position: absolute;top: 0;right: 0;opacity: 0;transition: opacity .1s linear;padding: .2rem;font-size: 1.1em;font-family: "Consolas";}
+		pre:hover a{opacity: 1}
+		a:link,a:visited,a:active{color: #5f9fd6;text-decoration: none;}
+		a:hover{text-decoration: underline;}
+		.text{width: 900px;height: 200px;max-width: 900px;max-height: 200px;}
 	</style>
 	<script src="js/jquery.js"></script>
 	<script src="js/deepstream.js"></script>
@@ -58,7 +65,7 @@
 		<td class="but" id="code">发代码</td>
 	</tr>
 </table>
-<div class="work-img">
+<div class="work" id="work-img">
 <div style="padding: 1.2em;text-align: left;">
 输入图片链接或者将图片拖到此处：
 <input type="text" id="img-input-1">
@@ -68,8 +75,14 @@
 <input type="file" id="img-input-2" value="Browse...">
 <button id="img-work-2">生成代码</button>
 <br>
-生成的代码：<button id="add_before">将代码添加到发送框的后面</button><button id="imgcopy">将代码复制到粘贴板</button><strong>注意：发送过大的图片可能会使浏览器炸掉</strong><br>
-<textarea id="img-ans" style="width: 900px;height: 200px;max-width: 900px;max-height: 200px;"></textarea>
+生成的代码：<button id="add_before">发送</button><button id="imgcopy">将代码复制到粘贴板</button><strong>注意：发送过大的图片可能会使浏览器炸掉</strong><br>
+<textarea id="img-ans" class="text"></textarea>
+</div>
+</div>
+<div class="work" id="work-code">
+<div style="padding: 1.2em;text-align: left;">
+请输入你的代码：<button id="code-submit">发送</button><br>
+<textarea id="code-input" class="text"></textarea>
 </div>
 </div>
 </center>
