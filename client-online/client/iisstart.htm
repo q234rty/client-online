@@ -8,7 +8,7 @@
 		*{font-family: '微软雅黑';color: #ccc;}span{font-family: 'Courier New';}
 		.button{background-color: #777777; width: 10%;font-size: 0.95em; text-align: center;}
 		.button:hover{background-color: #888888;cursor:pointer;}
-		input,textarea{background-color: #666666;border: 0;}
+		input,textarea,select{background-color: #666666;border: 0;}
 		button{background-color: #555555;border: 0;}button:hover{background-color: #888888}
 		.list{line-height: 1em;max-width: 200px;}
 		.list p{background-color: #ccc;margin:0px auto;padding: 0.3em;}
@@ -84,7 +84,79 @@
 <div class="work" id="work-code">
 <div style="padding: 1.2em;text-align: left;">
 <p>
-语言：<input type="text" value="cpp" id="code-lang">（留空则不进行高亮处理）<br>
+语言：<select id="code-lang">
+<option var="cpp">cpp</option>
+<option var="1c">1c</option>
+<option var="actionscript">actionscript</option>
+<option var="apache">apache</option>
+<option var="applescript">applescript</option>
+<option var="asciidoc">asciidoc</option>
+<option var="autohotkey">autohotkey</option>
+<option var="avrasm">avrasm</option>
+<option var="axapta">axapta</option>
+<option var="bash">bash</option>
+<option var="brainfuck">brainfuck</option>
+<option var="clojure">clojure</option>
+<option var="cmake">cmake</option>
+<option var="coffeescript">coffeescript</option>
+<option var="cs">cs</option>
+<option var="css">css</option>
+<option var="d">d</option>
+<option var="delphi">delphi</option>
+<option var="diff">diff</option>
+<option var="django">django</option>
+<option var="dos">dos</option>
+<option var="erlang">erlang</option>
+<option var="erlang-repl">erlang-repl</option>
+<option var="fix">fix</option>
+<option var="fsharp">fsharp</option>
+<option var="glsl">glsl</option>
+<option var="go">go</option>
+<option var="haml">haml</option>
+<option var="handlebars">handlebars</option>
+<option var="haskell">haskell</option>
+<option var="http">http</option>
+<option var="ini">ini</option>
+<option var="java">java</option>
+<option var="javascript">javascript</option>
+<option var="json">json</option>
+<option var="lasso">lasso</option>
+<option var="lisp">lisp</option>
+<option var="livecodeserver">livecodeserver</option>
+<option var="lua">lua</option>
+<option var="makefile">makefile</option>
+<option var="markdown">markdown</option>
+<option var="mathematica">mathematica</option>
+<option var="matlab">matlab</option>
+<option var="mel">mel</option>
+<option var="mizar">mizar</option>
+<option var="nginx">nginx</option>
+<option var="objectivec">objectivec</option>
+<option var="ocaml">ocaml</option>
+<option var="oxygene">oxygene</option>
+<option var="parser3">parser3</option>
+<option var="perl">perl</option>
+<option var="php">php</option>
+<option var="profile">profile</option>
+<option var="python">python</option>
+<option var="r">r</option>
+<option var="rib">rib</option>
+<option var="rsl">rsl</option>
+<option var="ruby">ruby</option>
+<option var="ruleslanguage">ruleslanguage</option>
+<option var="rust">rust</option>
+<option var="scala">scala</option>
+<option var="scilab">scilab</option>
+<option var="scss">scss</option>
+<option var="smalltalk">smalltalk</option>
+<option var="sql">sql</option>
+<option var="tex">tex</option>
+<option var="vala">vala</option>
+<option var="vbnet">vbnet</option>
+<option var="vbscript">vbscript</option>
+<option var="vhdl">vhdl</option>
+<option var="xml">xml</option>
+</select>（留空则不进行高亮处理）<br>
 请输入你的代码：<button id="code-submit">发送</button> | 私信给玩家<input type="text" id="code-player"><button id="code-msg">发送</button>
 </p>
 <textarea id="code-input" class="text"></textarea>

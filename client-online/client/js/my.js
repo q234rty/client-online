@@ -21,7 +21,6 @@ var addMassage = function (msg) {
 	setClasses(newp);
 	var div = newp[0];
 	$('.main').scrollTop($('.main')[0].scrollHeight);
-	hljs.initHighlighting();
 };
 var _addMassage = function (msg) {
 	record1.set('msg', msg);
