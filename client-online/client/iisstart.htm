@@ -3,8 +3,9 @@
 <head>
 	<meta charset="utf-8">
 	<title>Client网页版</title>
+	<link href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">
 	<style type="text/css">
-		*{font-family: '微软雅黑';color: #ccc;}
+		*{font-family: '微软雅黑';color: #ccc;}span{font-family: 'Courier New';}
 		.button{background-color: #777777; width: 10%;font-size: 0.95em; text-align: center;}
 		.button:hover{background-color: #888888;cursor:pointer;}
 		input,textarea{background-color: #666666;border: 0;}
@@ -81,8 +82,11 @@
 </div>
 </div>
 <div class="work" id="work-code">
-<div style="padding: 1.2em;text-align: left;"><p>
-请输入你的代码：<button id="code-submit">发送</button></p>
+<div style="padding: 1.2em;text-align: left;">
+<p>
+语言：<input type="text" value="cpp" id="code-lang">（留空则不进行高亮处理）<br>
+请输入你的代码：<button id="code-submit">发送</button> | 私信给玩家<input type="text" id="code-player"><button id="code-msg">发送</button>
+</p>
 <textarea id="code-input" class="text"></textarea>
 </div>
 </div>
@@ -90,5 +94,7 @@
 
 <div class="ok"><p>Code copied to clipboard!</p></div>
 <div class="waiting"><p>Waiting...</p></div>
+
+<script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>  
 </body>
 </html>

@@ -20,7 +20,8 @@ var addMassage = function (msg) {
 	ma.append(newp);
 	setClasses(newp);
 	var div = newp[0];
-	$('.main').scrollTop( $('.main')[0].scrollHeight );
+	$('.main').scrollTop($('.main')[0].scrollHeight);
+	hljs.initHighlighting();
 };
 var _addMassage = function (msg) {
 	record1.set('msg', msg);
@@ -61,6 +62,9 @@ var _removePlayer = function (name) {
 	})
 	record1.set('player', str.substr(1));
 }
+var msgToPlayer = function (player, msg) {
+	_addMassage(name+" -&gt; "+player+": "+msg);
+}
 var send = function (msg) {
 	if(typeof msg == 'object'){
 		var ra = $("#ta");
@@ -79,7 +83,7 @@ var send = function (msg) {
 			}
 			var a = msg.match(/\S{1,10}/g);
 			if(!hasPlayer(a[1])) addMassage('No such player!');
-			else _addMassage(name+" -&gt; "+a[1]+": "+msg.substr(5+a[1].length));
+			else msgToPlayer(a[1], msg.substr(5+a[1].length));
 		}
 		else addMassage('Unknow command...');
 	}
@@ -113,18 +117,18 @@ record1.subscribe('player', function(value) {
 			if(!vis[i]) addPlayer(dity[i]);
 	}
 	if(name == '' || name == 'null')
-		setTimeout('ooll()', 500);
+		setTimeout('ooll()', 1000);
 });
 var ooll = function () {
 	var n = 1;
-	name = prompt('Input your name:', '');
+	name = prompt('Input your name:');
 	while(n == 1){
 		if(name == '' || name == 'null')
-			name = prompt('Fuck you??', '');
+			name = prompt('INPUT YOUR NAME!!!!');
 		else if(!/^\S{1,10}$/.test(name))
 			name = prompt('It\'s not a name of a player!');
 		else if(hasPlayer(name))
-			name = prompt('Already has that player!', '');
+			name = prompt('Already has that player!');
 		else n = 0;
 	}
 	var str = name;
@@ -147,6 +151,19 @@ var html2Escape = function(sHtml) {
 			return {'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c];
 		});
 }
+var getCode = function () {
+	var lang = $('#code-lang').val();
+	if(lang == ''){
+		var cc = html2Escape($('#code-input').val());
+		return '<div align="center"><pre><code class="hljs">'+cc+'</code>'
+		+'<a href="javascript:;" class="cpy" data-clipboard-text="'+cc+'">Copy</a></pre></div>';
+	}
+	var code = hljs.highlight(lang, $('#code-input').val()).value;
+	if(code == '') return '';
+	var cpycode = html2Escape($('#code-input').val());
+	return '<div align="center"><pre><code class="hljs '+lang+'">'+code+'</code>'
+		+'<a href="javascript:;" class="cpy" data-clipboard-text="'+cpycode+'">Copy</a></pre></div>';
+};
 $(document).ready(function () {
 	$("#submit").click(send);
 	$('#img').click(function () {
@@ -166,11 +183,11 @@ $(document).ready(function () {
 		if(!window.FileReader){alert('请不要使用过时的浏览器！');return;}
 		$('#img-ans')[0].value = '';
 		var file = $('#img-input-2')[0].files[0];
-		if(!/image\/\w+/.test(file.type)){   
+		if(!/image\/\w+/.test(file.type)){
 			alert("请确保文件为图像类型");
 			return false; 
 		}
-		r = new FileReader();  //本地预览
+		r = new FileReader();
 		r.onload = function(){
 			$('#img-ans').val('<img src="'+r.result+'">');
 			$('.waiting').hide('slow');
@@ -194,10 +211,17 @@ $(document).ready(function () {
 		});
 	});
 	$('#code-submit').click(function () {
-		var code = html2Escape($('#code-input').val());
-		send('<div align="center"><pre><code>'+code+'</code>'
-			+'<a href="javascript:;" class="cpy" data-clipboard-text="'+code+'">Copy</a></pre></div>');
+		var code = getCode();
+		if(code == '') return alert('Enter code!');
+		send(code);
 	});
+	$('#code-msg').click(function () {
+		var player = $('#code-player').val();
+		if(player == '') return alert('Enter the player name!');
+		var code = getCode();
+		if(code == '') return alert('Enter code!');
+		msgToPlayer(player, getCode());
+	})
 	document.getElementById('ta').onkeydown = function () {
 		if(event.which == 13){
 			send($('#ta').val());

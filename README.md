@@ -16,6 +16,13 @@
 1. Open your friend's ip link in Chrome(or other).
 2. Enjoy!
 
+# bugs
+
+## Zombie Players. (Quited but still in player list)
+> Solution: press F12 and enter command `_removePlayer('name')`
+
+------------------
+
 # 如何使用
 
 ## 服务器
@@ -30,11 +37,6 @@
 ## 客户端
 打开浏览器并输入你朋友的ip即可。
 如果本机是服务端，而且通过ip访问不了，那么请在本地改回localhost进行访问。
-
-# bugs
-
-## Zombie Players. (Quited but still in player list)
-> Solution: press F12 and enter command `_removePlayer('name')`
 
 # 已知问题
 
