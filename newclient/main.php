@@ -9,46 +9,20 @@ if($name == '') header("Location: /index.php");
 	<title>Client - Online</title>
 	<script src="/js/jquery.js"></script>
 	<script src="/js/sw.js"></script>
-	<style type="text/css">
-	body{margin: 0;}h1,.big{font-family: 'Copperplate Gothic';font-weight: lighter;}
-	.head{width: 100%;box-shadow: 0px 0px 10px #ccc;background-color: #fff;font-family: 'Copperplate Gothic';display: table;position: fixed;top: 0;}
-	.upd{display: table-cell;vertical-align: middle;text-align: center;position: relative;}
-	.upd:hover{background-color: #eee;cursor: pointer;}
-	.upd:before{content: "";position: absolute;left: 0; top: 0;width: 100%;height: 2px;opacity: 0;}
-	.upd:hover:before{background-color: #66ccff;opacity: 1;}
-	.ops{margin: 0;padding: 0;display: none;background-color: #fff;}
-	.ops li{padding: 15px;list-style-type: none;font-family: 'Copperplate Gothic';width: 150px;position: relative;}
-	.ops li:hover{background-color: #eee;cursor: pointer;}
-	.ops li:before{content: "";position: absolute;left: 0; top: 0;width: 5px;height: 100%;opacity: 0;}
-	.ops li:hover:before{background-color: #66ccff;opacity: 1;}
-	.main{text-align: left;}
-	.at{text-decoration: none;}
-	.at:before{content: "@";color: black;}
-	.s1{background-color: #ccc;padding-left: 20px;padding-right: 20px;}
-	.s0{background-color: #ddd;padding-left: 20px;padding-right: 20px;}
-	.fixed-bottom{position: fixed;bottom: 0;}
-	.send-code-dlg{box-shadow: 0px 0px 100px #999; position: fixed;z-index:1;top: 30%;left: 50%;margin: -141px 0 0 -301px;width: 600px;height:280px;text-align:center;background-color:#F4F4F4;overflow:hidden;display: none;}
-	.notice{box-shadow: 0px 0px 100px #999; position: fixed;z-index:1;top: 30%;left: 50%;margin: -141px 0 0 -301px;width: 600px;height:280px;text-align:center;background-color:#F4F4F4;overflow:hidden;display: none;}
-	.but{background-color: #66ccff;border: 0;width: 70px;height:30px;font-weight: lighter;margin: 5px;}
-	.but:hover{background-color: #55bbee;cursor: pointer;}
-	pre{margin: 0;padding: 0;background-color: #999;padding: 10px;word-wrap: break-word;white-space: pre-wrap;tab-size: 4;}
-	pre code{font-family: 'Courier New';word-break: break-all;word-wrap: break-word;}
-	::selection{background-color: #777;}::-moz-selection{background-color: #777;}
-	a{text-decoration: none;color: #55bbdd;}
-	</style>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
 <div style="position: relative;">
-	<div style="height: 45px;"></div>
+	<div style="height: 60px;"></div>
 	<!-- menu -->
 	<div style="width: 100%;">
 	<!-- view -->
 		<div id="fuck_zyy" class="main"></div>
-		<div style="height: 50px;"></div>
+		<div style="height: 70px;"></div>
 		<!-- console -->
 	</div>
 </div>
-<footer style="width: 100%;height: 50px;background-color: #ccc;box-shadow: 0px 0px 10px #999;" class="fixed-bottom">
+<footer style="width: 100%;height: 50px;background-color: #ccc;box-shadow: 0px 0px 30px #999;" class="fixed-bottom">
 	<form onsubmit="return send();" style="width: 100%;">
 		<table style="width: 100%;">
 			<tr>
@@ -87,9 +61,10 @@ if($name == '') header("Location: /index.php");
 </div>
 <div class="notice">
 	<h1>Notice</h1>
-	<div style="text-align: left;padding: 10px;">
-		<h2 style="margin: 0;">6.19 update</h2>
-		<p>新增发送代码以及两项简单的markdown（超链接和图片）</p>
+	<div style="text-align: left;padding-left: 20px;">
+		<h2 style="margin: 0;">6.20 update</h2>
+		<p><del>随便搞了搞它</del></p>
+		<p>只是把UI写的更丑了而已。</p>
 	</div>
 	<div style="position: absolute;top: 5px;right: 5px;">
 		<a href="javascript:;" onclick="$('.notice').fadeOut(500)">Close</a>
