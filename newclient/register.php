@@ -51,7 +51,7 @@ if($name != "")
 			<tr>
 				<td>User Name:</td>
 				<td>
-					<input type="text" name="name" value="<?php echo $name;?>">
+					<input type="text" name="name" value="<?php echo $name;?>" autocomplete="1">
 				</td>
 			</tr>
 			<tr>
@@ -74,7 +74,7 @@ if($name != "")
 			<?php elseif ($name !== "" && $psw1 !== $psw2): ?>
 				Two passwords are not same?
 			<?php else: ?>
-				CTC is gay.
+				Does md5 hash save?
 			<?php endif ?></p></td></tr>
 			<tr>
 			<td><a href="/index.php">log in</a></td>
@@ -88,7 +88,7 @@ if($name != "")
 <?php
 if(!$hasuser && $name != "" && $psw1 == $psw2 && $psw1 != ""){
 	$op = fopen($file, "w");
-	fwrite($op, hash("md5", $psw1, False));
+	fwrite($op, hash("md5", hash("md5", $psw1, False), False));
 	fclose($op);
 echo <<<EOF
 <form action="/main.php" method="post" name="dog">

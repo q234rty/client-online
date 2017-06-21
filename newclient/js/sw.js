@@ -18,14 +18,6 @@ var at = function (a) {
 	var last = $('#msg').val();
 	$('#msg').val('@'+$(a).html()+' '+last);
 }
-var code_submit = function () {
-	var code = $('#code-in').val();
-	if(code === '') return alert('Enter your code!');
-	$('.send-code-dlg').fadeOut(200);
-	send('<pre><code>'+code.replace(/[<>"&\n]/g, function (c) {
-		return {'<':'&lt;','>':'&gt;','"':'&quot;','&':'&amp;','\n':'<br>'}[c];
-	})+'</code></pre>');
-}
 var len = 1;
 $(document).ready(function () {
 	setInterval(function () {
@@ -42,19 +34,14 @@ $(document).ready(function () {
 				var nm = szb.match(/\]\w+/)[0].substr(1);
 				var zyy = $('<a href="javascript:;" onclick="at(this)"></a>').addClass('at').html(nm);
 				newdiv.append(zyy);
-				var ctc = szb.substr(szb.indexOf('|')+1);
+				var ctc = szb.substr(szb.indexOf('|')+1).replace(/<br>/g, '\n');
 				newdiv.append($('<div/>').addClass('init').html(ctc));
 				$('#fuck_zyy').append(newdiv);
 				document.body.scrollTop = document.body.scrollHeight;
+				Prism.highlightAll();
 			}
 		})
 	}, 1000);
-	$('#send-code').click(function () {
-		$('.send-code-dlg').fadeIn(500)
-	})
-	$('#send-pictrue').click(function () {
-		alert('现在你可以用![alt](link)发送网络上的图片，本地图片还在开发中。。')
-	})
 	$('#notice').click(function () {
 		$('.notice').fadeIn(500)
 	})

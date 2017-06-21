@@ -1,7 +1,7 @@
 <?php
 $uname = $_POST['name'];
 $psw = $_POST['psw'];
-if($psw != '') $psw = hash("md5", $psw, False);
+if($psw != '') $psw = hash("md5", hash("md5", $psw, False), False);
 $paspath = "psws/" . $uname . ".log";
 $rightpsw = 'FUCK_YOU!';
 $hasuser = file_exists($paspath);
@@ -35,7 +35,7 @@ if($uname != '' && $hasuser){
 			<tr>
 				<td>User Name:</td>
 				<td>
-					<input type="text" name="name" value="<?php echo $uname;?>">
+					<input type="text" name="name" value="<?php echo $uname;?>" autocomplete="1">
 				</td>
 			</tr>
 			<tr>
@@ -53,6 +53,8 @@ if($uname != '' && $hasuser){
 					echo 'No such user!';
 				else if($psw !== $rightpsw)
 					echo 'Password wrong!';
+				else;
+			else echo '密码保存系统有改动，请重新注册。';
 			?></p></td></tr>
 			<tr>
 				<td><a href="/register.php">register</a></td>
@@ -63,16 +65,16 @@ if($uname != '' && $hasuser){
 
 </div></center>
 
-<?php
-if($rightpsw === $psw)
-echo <<<EOF
+<?php if($rightpsw === $psw): ?>
+
 <form action="/main.php" method="post" name="dog">
 	<input type="hidden" name="name" value="{$uname}">
 </form><script type="text/javascript">document.dog.submit();</script>
-EOF;
 
-else if($uname != '')
-	echo '<script type="text/javascript">document.getElementById(\'psw\').focus();</script>';
-?>
+<?php elseif($uname != ''): ?>
+
+	<script type="text/javascript">document.getElementById('psw').focus();</script>
+
+<?php endif ?>
 </body>
 </html>

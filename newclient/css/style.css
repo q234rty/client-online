@@ -142,7 +142,7 @@ body{
 }
 pre{
 	margin-top: 10px;
-	background-color: #ddd;
+	background-color: #fff;
 	padding: 10px;
 	tab-size: 4;
 	border: 4px solid #666;
@@ -151,10 +151,12 @@ pre{
 	white-space: pre-wrap;
 }
 code{
-	font-family: 'Courier New';
+	font-family: 'Fira Code';
+	font-feature-settings: "calt" 1;  /* Enable ligatures for IE 10+, Edge */
+	text-rendering: optimizeLegibility; /* Force ligatures for Webkit, Blink, Gecko */
 	word-break: break-all;
 	word-wrap: break-word;
-	background-color: #ddd;
+	background-color: #fff;
 	border: 1px solid #000;
 }
 pre code{

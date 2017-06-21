@@ -7,16 +7,13 @@ if($name == '') header("Location: /index.php");
 <head>
 	<meta charset="utf-8">
 	<title>Client - Online</title>
-	<script type="text/x-mathjax-config">
-      MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
-    </script>
-    <script type="text/javascript" async
-      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
-    </script>
 	<script src="/js/jquery.js"></script>
 	<script src="/js/marked.js"></script>
+	<script src="/js/prism.js"></script>
 	<script src="/js/sw.js"></script>
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/css/fira_code.css">
+	<link rel="stylesheet" type="text/css" href="/css/prism.css">
 </head>
 <body>
 <center>
@@ -31,8 +28,6 @@ if($name == '') header("Location: /index.php");
 </center>
 <div style="position: fixed;right: 0;top: 45px;box-shadow: -2px 2px 4px #999;">
 	<ul class="ops" onmouseleave="$(this).hide(200);">
-		<li id="send-code">Send code</li>
-		<li id="send-pictrue">Send pictrue</li>
 		<li id="notice">Notice</li>
 	</ul>
 </div>
@@ -46,6 +41,7 @@ if($name == '') header("Location: /index.php");
 		<h2 style="margin: 0;">6.21 update</h2>
 		<p>只是把UI写的更加丑了点而已。</p>
 		<p>现在支持传统的Markdown了。</p>
+		<p>代码高亮搞定qwq代码所用字体:Fira Code</p>
 	</div>
 	<div style="position: absolute;top: 5px;right: 5px;">
 		<a href="javascript:;" onclick="$('.notice').fadeOut(500)">Close</a>
