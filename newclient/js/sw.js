@@ -1,28 +1,13 @@
 var calc = function (str) {
-	str = str.replace(/!\[.*\]\(.+\)/g, function (a) {
-		var link = a.match(/\(.+\)$/)[0];
-		link = link.substr(1, link.length-2);
-		var alt = a.substr(2, a.indexOf(']')-2);
-		alt = alt === '' ? '' : (' alt="'+alt+'"');
-		return '<img src="'+link+'"'+alt+'>';
-	})
-	str = str.replace(/\[.+\]\(.+\)/g, function (a) {
-		var link = a.match(/\(.+\)$/)[0];
-		link = link.substr(1, link.length-2);
-		var alt = a.substr(1, a.indexOf(']')-1);
-		return '<a href="'+link+'" target="view_window">'+alt+'</a>';
-	})
-	str = str.replace(/@\w+&nbsp;/g, function (a) {
-		var name = a.substr(1, a.length-7);
+	str = marked(str).replace(/>\s+</g, '><').replace(/\n/g, '<br>').replace(/@\w+ /g, function (a) {
+		var name = a.substr(1, a.length-2);
 		return '<a href="javascript:;" onclick="at(this)" class="at">'+name+'</a>&nbsp;';
-	})
+	}).replace(/(<br>)+$/g, '').replace(/<script.*>.*<\/script>/g, '');
 	return str;
 }
 var send = function (str) {
 	var names = $('#onamae').html();
-	var msgs = typeof str === 'string' ? str : calc($('#msg').val().replace(/[<>"& ]/g, function (c) {
-		return {'<':'&lt;','>':'&gt;','"':'&quot;','&':'&amp;',' ':'&nbsp;'}[c];
-	}));
+	var msgs = typeof str === 'string' ? str : calc($('#msg').val());
 	$('#msg').val('');
 	$.post("/send.php", {
 		name: names, msg: msgs
@@ -73,34 +58,4 @@ $(document).ready(function () {
 	$('#notice').click(function () {
 		$('.notice').fadeIn(500)
 	})
-	var width = window.innerWidth,
-		height = window.innerHeight,
-		blockWidth = 50,
-		blockHeight = 50,
-		w = width/blockWidth+1,
-		h = height/blockHeight+1,
-		randint = function (a, b) {
-			return Math.floor(Math.random()*(b-a))+a;
-		},
-		rand = function (x1, y1, x2, y2, x3, y3) {
-			// return 'rgb('
-			// 	+ randint(x1, y1) + ', '
-			// 	+ randint(x2, y2) + ', '
-			// 	+ randint(x3, y3) + ')'
-			// return 'rgb(220, 230, 231)';
-			return "#c4c4c4";
-		}
-	for(var i = 0; i < w; i++)
-		for(var j = 0; j < h; j++){
-			var div = $('<div/>');
-			div.addClass('block');
-			div.css('width', blockWidth+'px');
-			div.css('height', blockHeight+'px');
-			div.css('top', j*blockHeight+'px');
-			div.css('left', i*blockWidth+'px');
-			// div.css('background-color', rand(223, 213, 226, 243, 226, 241));
-			div.css('background', "linear-gradient(to left top,"+rand(223, 255, 226, 255, 226, 255)+" , white)");
-			div.css('opacity', 1-(1.0*i/w+1.0*j/h)/2);
-			$('body').append(div);
-		}
 })
