@@ -19,29 +19,34 @@ if($name == '') header("Location: /index.php");
 <center>
 	<div style="position: relative;width: 90%;">
 		<div id="fuck_zyy" class="main"></div>
-		<div style="position: relative;">
-			<textarea id="msg" style="margin-top: 5px;width: 99%;max-width: 99%;height: 73px;float: top;" placeholder="Styling with Markdown is supported"></textarea>
+		<div style="position: relative;background-color: #ccc;border: 1px solid #555;padding: 5px;margin-top: 10px;">
+			<textarea id="msg" style="width: 99%;max-width: 99%;height: 73px;float: top;" placeholder="Styling with Markdown is supported"></textarea>
 			<button onclick="send()" style="top: 5px;left: 0;height: 40px;width: 200px;float: right;font-size: 2em;" class="but big">commit</button>
-			<div style="height: 100px;"></div>
+			<ul class="toolbar">
+				<li id="sendimg"><img src="/img/send-img.svg"></li>
+				<li id="sendcode"><img src="/img/send-code.svg"></li>
+				<li id="huaji"><img src="/img/huaji.png"></li>
+			</ul>
+		<div style="height: 55px;"></div>
+		</div>
+		<div style="height: 100px;">
+<!--[if IE]>
+<p>你正在使用<strong>过时</strong>的浏览器，Client暂不支持。请 <a href="http://browsehappy.com/">升级浏览器</a>以获得更好的体验！</p>
+<![endif]-->
 		</div>
 	</div>
 </center>
-<div style="position: fixed;right: 0;top: 45px;box-shadow: -2px 2px 4px #999;">
-	<ul class="ops" onmouseleave="$(this).hide(200);">
-		<li id="notice">Notice</li>
-	</ul>
-</div>
 <div class="head">
-	<span style="padding: 5px;font-size: 2em;margin: 0;font-weight: bold;display: inline-block;" class="big">Client - Online</span>
-	<span class="upd" onclick="$('.ops').show(200);" id="onamae"><?php echo $name?></span>
+	<div class="item tit">Client - Online</div>
+	<div class="item name"><?php echo $name?></div>
 </div>
 <div class="notice">
 	<h1>Notice</h1>
 	<div style="text-align: left;padding-left: 20px;">
-		<h2 style="margin: 0;">6.21 update</h2>
-		<p>只是把UI写的更加丑了点而已。</p>
-		<p>现在支持传统的Markdown了。</p>
-		<p>代码高亮搞定qwq代码所用字体:Fira Code</p>
+		<h2 style="margin: 0;">6.22 update</h2>
+		<p>现在每天都会弹出来这个框框qwq而且每天只会弹出来一次</p>
+		<p>给不会用Markdown的童鞋加了点福利</p>
+		<p><del>别问我那个滑稽哪来的</del></p>
 	</div>
 	<div style="position: absolute;top: 5px;right: 5px;">
 		<a href="javascript:;" onclick="$('.notice').fadeOut(500)">Close</a>

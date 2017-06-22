@@ -6,7 +6,7 @@ var calc = function (str) {
 	return str;
 }
 var send = function (str) {
-	var names = $('#onamae').html();
+	var names = $('.name').html();
 	var msgs = typeof str === 'string' ? str : calc($('#msg').val());
 	$('#msg').val('');
 	$.post("/send.php", {
@@ -42,7 +42,54 @@ $(document).ready(function () {
 			}
 		})
 	}, 1000);
-	$('#notice').click(function () {
-		$('.notice').fadeIn(500)
+	if(localStorage.client_notice != new Date().getDate()){
+		$('.notice').fadeIn(500);
+		localStorage.client_notice = new Date().getDate();
+	}
+	$('.name').click(function () {
+		$('.notice').fadeIn(500);
+	})
+	$('#sendcode').click(function () {
+		var $msg = $('#msg');
+		var kk = $msg.val();
+		if(kk === '' || /.*\n$/.test(kk)) $msg.val(kk+'```cpp\n```');
+		else $msg.val(kk+'\n```cpp\n```');
+		$msg.focus();
+		var len = $msg.val().length;
+		$msg[0].setSelectionRange(len-7, len-4); 
+	});
+	(function($){
+		$.fn.extend({
+			insertAtCaret: function(myValue, flag = 0){
+				var $t=$(this)[0];
+				if (document.selection) {
+					this.focus();
+					sel = document.selection.createRange();
+					sel.text = myValue;
+					this.focus();
+				}
+				else 
+					if ($t.selectionStart || $t.selectionStart == '0') {
+						var startPos = $t.selectionStart;
+						var endPos = $t.selectionEnd;
+						var scrollTop = $t.scrollTop;
+						$t.value = $t.value.substring(0, startPos) + myValue + $t.value.substring(endPos, $t.value.length);
+						this.focus();
+						$t.selectionStart = startPos + myValue.length - flag;
+						$t.selectionEnd = startPos + myValue.length - flag;
+						$t.scrollTop = scrollTop;
+					}
+					else {
+						this.value += myValue;
+						this.focus();
+					}
+			}
+		})	
+	})(jQuery);
+	$('#huaji').click(function () {
+		$('#msg').insertAtCaret('![](/img/huaji.png)');
+	})
+	$('#sendimg').click(function () {
+		$('#msg').insertAtCaret('![]()', true);
 	})
 })

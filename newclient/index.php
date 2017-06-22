@@ -68,7 +68,7 @@ if($uname != '' && $hasuser){
 <?php if($rightpsw === $psw): ?>
 
 <form action="/main.php" method="post" name="dog">
-	<input type="hidden" name="name" value="{$uname}">
+	<input type="hidden" name="name" value="<?php echo $uname?>">
 </form><script type="text/javascript">document.dog.submit();</script>
 
 <?php elseif($uname != ''): ?>
