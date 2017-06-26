@@ -5,6 +5,7 @@ if($name == '') header("Location: /index.php");
 <!DOCTYPE html>
 <html>
 <head>
+	<base target="_blank"/>
 	<meta charset="utf-8">
 	<title>Client - Online</title>
 	<script src="/js/jquery.js"></script>
@@ -27,7 +28,7 @@ if($name == '') header("Location: /index.php");
 				<li id="sendcode"><img src="/img/send-code.svg"></li>
 				<li id="huaji"><img src="/img/huaji.png"></li>
 			</ul>
-		<div style="height: 55px;"></div>
+			<div style="height: 55px;"></div>
 		</div>
 		<div style="height: 100px;">
 <!--[if IE]>
@@ -43,10 +44,8 @@ if($name == '') header("Location: /index.php");
 <div class="notice">
 	<h1>Notice</h1>
 	<div style="text-align: left;padding-left: 20px;">
-		<h2 style="margin: 0;">6.22 update</h2>
-		<p>现在每天都会弹出来这个框框qwq而且每天只会弹出来一次</p>
-		<p>给不会用Markdown的童鞋加了点福利</p>
-		<p><del>别问我那个滑稽哪来的</del></p>
+		<h2 style="margin: 0;">6.26 update</h2>
+		<p>加了点css特效而已。外带换了张壁纸，希望大家喜欢⁄(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄</p>
 	</div>
 	<div style="position: absolute;top: 5px;right: 5px;">
 		<a href="javascript:;" onclick="$('.notice').fadeOut(500)">Close</a>

@@ -2,7 +2,9 @@ var calc = function (str) {
 	str = marked(str).replace(/>\s+</g, '><').replace(/\n/g, '<br>').replace(/@\w+ /g, function (a) {
 		var name = a.substr(1, a.length-2);
 		return '<a href="javascript:;" onclick="at(this)" class="at">'+name+'</a>&nbsp;';
-	}).replace(/(<br>)+$/g, '').replace(/<script.*>.*<\/script>/g, '');
+	}).replace(/(<br>)+$/g, '').replace(/<\/?script.*>/g, function (e) {
+		return e.replace(/</g, '&lt;').replace(/>/g, '&gt;')
+	});
 	return str;
 }
 var send = function (str) {
@@ -17,6 +19,7 @@ var send = function (str) {
 var at = function (a) {
 	var last = $('#msg').val();
 	$('#msg').val('@'+$(a).html()+' '+last);
+	$('#msg').focus();
 }
 var len = 1;
 $(document).ready(function () {

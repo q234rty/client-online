@@ -41,3 +41,10 @@
     font-weight: 700;
     font-style: normal;
 }
+
+@font-face{
+    font-family: 'Copperplate Gothic';
+    src: url('/ttf/Copperplate Gothic Light.ttf');
+    font-weight: 300;
+    font-style: normal;
+}
