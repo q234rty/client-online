@@ -12,6 +12,7 @@ if($name != "")
 <head>
 	<meta charset="utf-8">
 	<title>Client-login</title>
+	<link rel="stylesheet" type="text/css" href="/css/fira_code.css">
 	<style type="text/css">
 		*{
 			font-family: 'Copperplate Gothic';

@@ -1,28 +1,15 @@
+var name, op;
 var calc = function (str) {
-	str = marked(str).replace(/>\s+</g, '><').replace(/\n/g, '<br>').replace(/@\w+ /g, function (a) {
+	str = marked(str, {sanitize: op}).replace(/>\s+</g, '><').replace(/\n/g, '<br>').replace(/(<br>)+$/g, '').replace(/@\w+ /g, function (a) {
 		var name = a.substr(1, a.length-2);
 		return '<a href="javascript:;" onclick="at(this)" class="at">'+name+'</a>&nbsp;';
-	}).replace(/(<br>)+$/g, '').replace(/<\/?script.*>/g, function (e) {
-		return e.replace(/</g, '&lt;').replace(/>/g, '&gt;')
-	});
+	}).replace(/<\/h\d>/g, function (e) {return e+'<hr>'})
 	return str;
-}
-var send = function (str) {
-	var names = $('.name').html();
-	var msgs = typeof str === 'string' ? str : calc($('#msg').val());
-	$('#msg').val('');
-	$.post("/send.php", {
-		name: names, msg: msgs
-	})
-	return false;
-}
-var at = function (a) {
-	var last = $('#msg').val();
-	$('#msg').val('@'+$(a).html()+' '+last);
-	$('#msg').focus();
 }
 var len = 1;
 $(document).ready(function () {
+	name = $('.name').html();
+	op = name != 'root';
 	setInterval(function () {
 		$.post("/gets.php", {}, function (ans) {
 			if(typeof ans !== 'string')
@@ -61,38 +48,53 @@ $(document).ready(function () {
 		var len = $msg.val().length;
 		$msg[0].setSelectionRange(len-7, len-4); 
 	});
-	(function($){
-		$.fn.extend({
-			insertAtCaret: function(myValue, flag = 0){
-				var $t=$(this)[0];
-				if (document.selection) {
-					this.focus();
-					sel = document.selection.createRange();
-					sel.text = myValue;
-					this.focus();
-				}
-				else 
-					if ($t.selectionStart || $t.selectionStart == '0') {
-						var startPos = $t.selectionStart;
-						var endPos = $t.selectionEnd;
-						var scrollTop = $t.scrollTop;
-						$t.value = $t.value.substring(0, startPos) + myValue + $t.value.substring(endPos, $t.value.length);
-						this.focus();
-						$t.selectionStart = startPos + myValue.length - flag;
-						$t.selectionEnd = startPos + myValue.length - flag;
-						$t.scrollTop = scrollTop;
-					}
-					else {
-						this.value += myValue;
-						this.focus();
-					}
+	$.fn.extend({
+		insertAtCaret: function(myValue, flag = 0){
+			var $t = $(this)[0];
+			if (document.selection) {
+				this.focus();
+				sel = document.selection.createRange();
+				sel.text = myValue;
+				this.focus();
 			}
-		})	
-	})(jQuery);
+			else if ($t.selectionStart || $t.selectionStart == '0') {
+				var startPos = $t.selectionStart;
+				var endPos = $t.selectionEnd;
+				var scrollTop = $t.scrollTop;
+				$t.value = $t.value.substring(0, startPos) + myValue + $t.value.substring(endPos, $t.value.length);
+				this.focus();
+				$t.selectionStart = startPos + myValue.length - flag;
+				$t.selectionEnd = startPos + myValue.length - flag;
+				$t.scrollTop = scrollTop;
+			}
+			else {
+				this.value += myValue;
+				this.focus();
+			}
+		}
+	})
 	$('#huaji').click(function () {
 		$('#msg').insertAtCaret('![](/img/huaji.png)');
 	})
 	$('#sendimg').click(function () {
-		$('#msg').insertAtCaret('![]()', true);
+		$('#msg').insertAtCaret('![]()', 1);
 	})
+	document.execCommand("BackgroundImageCache", false, true);
 })
+var at = function (a) {
+	var last = $('#msg').val();
+	$('#msg').val('@'+$(a).html()+' '+last);
+	$('#msg').focus();
+}
+var send = function (str) {
+	var names = $('.name').html();
+	var msgs = typeof str === 'string' ? str : calc($('#msg').val());
+	$('#msg').val('');
+	var kk = msgs.match(/img/g);
+	if(kk !== null && kk.length > 20) return alert('图炮啊');
+	if(msgs.length > 100000) return alert('嘴炮啊');
+	$.post("/send.php", {
+		name: names, msg: msgs
+	})
+	return false;
+}

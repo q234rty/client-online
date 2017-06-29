@@ -54,7 +54,7 @@ pre[class*="lang-"] {
 
 :not(pre) > code[class*="lang-"],
 pre[class*="lang-"] {
-	background: #fff;
+	background: rgba(255, 255, 255, .5);
 }
 
 /* Inline code */
@@ -104,7 +104,6 @@ pre[class*="lang-"] {
 .lang-css .token.string,
 .style .token.string {
 	color: #a67f59;
-	background: hsla(0, 0%, 100%, .5);
 }
 
 .token.atrule,

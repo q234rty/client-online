@@ -17,6 +17,7 @@ if($uname != '' && $hasuser){
 <head>
 	<meta charset="utf-8">
 	<title>Client-login</title>
+	<link rel="stylesheet" type="text/css" href="/css/fira_code.css">
 	<style type="text/css">
 		*{font-family: 'Copperplate Gothic';}
 		h1{font-weight: lighter;font-size: 2.5em;text-align: center;text-indent: 0;height: 44px;}
@@ -53,8 +54,6 @@ if($uname != '' && $hasuser){
 					echo 'No such user!';
 				else if($psw !== $rightpsw)
 					echo 'Password wrong!';
-				else;
-			else echo '密码保存系统有改动，请重新注册。';
 			?></p></td></tr>
 			<tr>
 				<td><a href="/register.php">register</a></td>
