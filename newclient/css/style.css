@@ -1,11 +1,12 @@
-html{height: 100%;}
 body{
 	margin: 0;
-	background: url(/img/huaji.png) no-repeat center center fixed;
-	background-size: cover;
+	background-color: #fff;
+}
+.bgs{
 	animation: hhh 100s;
 	animation-iteration-count: infinite;
-	height: 100%;
+	background: url(/img/bg1.png) no-repeat center center fixed;
+	background-size: cover;
 }
 .init,#msg,.s{font-family: '微软雅黑';}
 .big,.name{
@@ -107,10 +108,6 @@ body{
 	padding-bottom: 10px;
 	transition: all .5s;
 }
-.init:hover{
-	padding-left: 40px;
-	padding-right: 0px;
-}
 .s:after{
 	content: "";
 	width: 100%;
@@ -148,20 +145,12 @@ body{
 	background-color: #55bbee;
 	cursor: pointer;
 }
-pre{
-	border: 4px solid #666;
-}
 code{
 	font-family: 'Fira Code';
 	font-feature-settings: "calt" 1;  /* Enable ligatures for IE 10+, Edge */
 	text-rendering: optimizeLegibility; /* Force ligatures for Webkit, Blink, Gecko */
-	word-break: break-all;
 	word-wrap: break-word;
-	background-color: rgba(255, 255, 255, .6);
-	border: 1px solid #000;
-}
-pre code{
-	border: none;
+	background-color: #eee;
 }
 ::selection{
 	background-color: #777;
@@ -219,15 +208,11 @@ blockquote{
 .toolbar img{
 	width: 30px;
 }
-center{
-	background-color: rgba(255, 255, 255, .5);
-	min-height: 100%;
-}
 .init h1,.init h2,.init h3,.init h4,.init h5,.init h6{
 	position: relative;
 	display: inline-block;
 	font-weight: lighter;
-	margin-bottom: 0;
+	margin-bottom: 20px;
 	margin-top: 10px;
 }
 .init h1:after,.init h2:after,.init h3:after,.init h4:after,.init h5:after,.init h6:after{
@@ -251,4 +236,27 @@ center{
 .init h1:hover:before,.init h2:hover:before,.init h3:hover:before,
 .init h4:hover:before,.init h5:hover:before,.init h6:hover:before{
 	left: -20px; opacity: 1;
+}
+.init h1,.init h2,.init h3,
+.init h4,.init h5,.init h6{
+	border-bottom: 2px solid #777;
+}
+.win10_button{
+	outline: 1px solid rgb(137, 137, 137);
+	outline-offset: 0px;
+	border: none;
+	background-color: rgb(225, 225, 225);
+	margin: 10px;
+	transition: all .3s;
+	text-align: center;
+	cursor: pointer;
+}
+.win10_button:focus{
+	outline: 2px solid rgb(0, 120, 215);
+	outline-offset: -1px;
+}
+.win10_button:hover{
+	outline: 1px solid rgb(0, 120, 215);
+	outline-offset: 0px;
+	background-color: rgb(229, 241, 251);
 }

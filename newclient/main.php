@@ -23,7 +23,7 @@ if($name == '') header("Location: /index.php");
 		<div id="fuck_zyy" class="main"></div>
 		<div style="position: relative;background-color: #ccc;border: 1px solid #555;padding: 5px;margin-top: 10px;">
 			<textarea id="msg" style="width: 99%;max-width: 99%;height: 73px;float: top;" placeholder="Styling with Markdown is supported"></textarea>
-			<button onclick="send()" style="top: 5px;left: 0;height: 40px;width: 200px;float: right;font-size: 2em;" class="but big">commit</button>
+			<button onclick="send()" style="top: 5px;left: 0;height: 40px;width: 200px;float: right;font-size: 2em;" class="win10_button big">commit</button>
 			<ul class="toolbar">
 				<li id="sendimg"><img src="/img/send-img.svg"></li>
 				<li id="sendcode"><img src="/img/send-code.svg"></li>
@@ -52,28 +52,6 @@ if($name == '') header("Location: /index.php");
 	<div style="position: absolute;top: 5px;right: 5px;">
 		<a href="javascript:;" onclick="$('.notice').fadeOut(500)">Close</a>
 	</div>
-</div>
-<div style="display: none;">
-	<img onload="$(this).remove()" src="/img/bg1.png">
-	<img onload="$(this).remove()" src="/img/bg2.png">
-	<img onload="$(this).remove()" src="/img/bg3.png">
-	<img onload="$(this).remove()" src="/img/bg4.png">
-	<img onload="$(this).remove()" src="/img/bg5.png">
-	<img onload="$(this).remove()" src="/img/bg6.png">
-	<img onload="$(this).remove()" src="/img/bg7.png">
-	<img onload="$(this).remove()" src="/img/bg8.png">
-	<img onload="$(this).remove()" src="/img/bg9.png">
-	<img onload="$(this).remove()" src="/img/bg10.png">
-	<img onload="$(this).remove()" src="/img/bg11.png">
-	<img onload="$(this).remove()" src="/img/bg12.png">
-	<img onload="$(this).remove()" src="/img/bg13.png">
-	<img onload="$(this).remove()" src="/img/bg14.png">
-	<img onload="$(this).remove()" src="/img/bg15.png">
-	<img onload="$(this).remove()" src="/img/bg16.png">
-	<img onload="$(this).remove()" src="/img/bg17.png">
-	<img onload="$(this).remove()" src="/img/bg18.png">
-	<img onload="$(this).remove()" src="/img/bg19.png">
-	<img onload="$(this).remove()" src="/img/bg20.png">
 </div>
 </body>
 </html>

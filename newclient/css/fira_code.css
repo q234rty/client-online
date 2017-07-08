@@ -34,25 +34,15 @@
 }
 
 @keyframes hhh{
-	0%,4%{background-image: url(/img/bg1.png);}
-	5%,9%{background-image: url(/img/bg2.png);}
-	10%,14%{background-image: url(/img/bg3.png);}
-	15%,19%{background-image: url(/img/bg4.png);}
-	20%,24%{background-image: url(/img/bg5.png);}
-	25%,29%{background-image: url(/img/bg6.png);}
-	30%,34%{background-image: url(/img/bg7.png);}
-	35%,39%{background-image: url(/img/bg8.png);}
-	40%,44%{background-image: url(/img/bg9.png);}
-	45%,49%{background-image: url(/img/bg10.png);}
-	50%,54%{background-image: url(/img/bg11.png);}
-	55%,59%{background-image: url(/img/bg12.png);}
-	60%,64%{background-image: url(/img/bg13.png);}
-	65%,69%{background-image: url(/img/bg14.png);}
-	70%,74%{background-image: url(/img/bg15.png);}
-	75%,79%{background-image: url(/img/bg16.png);}
-	80%,84%{background-image: url(/img/bg17.png);}
-	85%,89%{background-image: url(/img/bg18.png);}
-	90%,94%{background-image: url(/img/bg19.png);}
-	95%,99%{background-image: url(/img/bg20.png);}
+	0%, 9%{background-image: url(/img/bg1.png);}
+	10%, 19%{background-image: url(/img/bg2.png);}
+	20%, 29%{background-image: url(/img/bg3.png);}
+	30%, 39%{background-image: url(/img/bg4.png);}
+	40%, 49%{background-image: url(/img/bg5.png);}
+	50%, 59%{background-image: url(/img/bg6.png);}
+	60%, 69%{background-image: url(/img/bg7.png);}
+	70%, 79%{background-image: url(/img/bg8.png);}
+	80%, 89%{background-image: url(/img/bg9.png);}
+	90%, 99%{background-image: url(/img/bg10.png);}
 	100%{background-image: url(/img/bg1.png);}
 }

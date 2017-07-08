@@ -3,7 +3,7 @@ var calc = function (str) {
 	str = marked(str, {sanitize: op}).replace(/>\s+</g, '><').replace(/\n/g, '<br>').replace(/(<br>)+$/g, '').replace(/@\w+ /g, function (a) {
 		var name = a.substr(1, a.length-2);
 		return '<a href="javascript:;" onclick="at(this)" class="at">'+name+'</a>&nbsp;';
-	}).replace(/<\/h\d>/g, function (e) {return e+'<hr>'})
+	})
 	return str;
 }
 var len = 1;
@@ -83,14 +83,14 @@ $(document).ready(function () {
 })
 var at = function (a) {
 	var last = $('#msg').val();
-	$('#msg').val('@'+$(a).html()+' '+last);
+	$('#msg').val(last+'@'+$(a).html()+' ');
 	$('#msg').focus();
 }
 var send = function (str) {
 	var names = $('.name').html();
 	var msgs = typeof str === 'string' ? str : calc($('#msg').val());
 	$('#msg').val('');
-	var kk = msgs.match(/img/g);
+	var kk = msgs.match(/<img/g);
 	if(kk !== null && kk.length > 20) return alert('图炮啊');
 	if(msgs.length > 100000) return alert('嘴炮啊');
 	$.post("/send.php", {
