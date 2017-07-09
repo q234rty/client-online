@@ -1,0 +1,3 @@
+# Windows:
+*.log
+!root.log
