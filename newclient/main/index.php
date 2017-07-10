@@ -1,6 +1,6 @@
 <?php
 $name = $_POST['name'];
-if($name == '') header("Location: /index.php");
+if($name == '') header("Location: /");
 ?>
 <!DOCTYPE html>
 <html>

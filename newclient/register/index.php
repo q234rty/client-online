@@ -2,7 +2,7 @@
 $name = $_POST['name'];
 $psw1 = $_POST['psw1'];
 $psw2 = $_POST['psw2'];
-$file = "psws/{$name}.log";
+$file = "../psws/{$name}.log";
 $hasuser = False;
 if($name != "")
 	$hasuser = file_exists($file);
@@ -47,7 +47,7 @@ if($name != "")
 <div style="height: 100px;"></div>
 <div style="box-shadow: 0px 0px 100px #ccc;text-align: left;width: 580px;height: 350px;text-indent: 40px;" id="p">
 	<h1 style="padding:20px;">Register</h1>
-	<form action="/register.php" method="post">
+	<form action="/register/" method="post">
 		<table>
 			<tr>
 				<td>User Name:</td>
@@ -74,11 +74,9 @@ if($name != "")
 				Please input your password!
 			<?php elseif ($name !== "" && $psw1 !== $psw2): ?>
 				Two passwords are not same?
-			<?php else: ?>
-				Does md5 hash save?
 			<?php endif ?></p></td></tr>
 			<tr>
-			<td><a href="/index.php">log in</a></td>
+				<td><a href="/">log in</a></td>
 				<td><input type="submit" name="submit" value="Register" class="but"></td>
 			</tr>
 		</table>
@@ -92,7 +90,7 @@ if(!$hasuser && $name != "" && $psw1 == $psw2 && $psw1 != ""){
 	fwrite($op, hash("md5", hash("md5", $psw1, False), False));
 	fclose($op);
 echo <<<EOF
-<form action="/main.php" method="post" name="dog">
+<form action="/main/" method="post" name="dog">
 	<input type="hidden" name="name" value="{$name}">
 </form><script type="text/javascript">document.dog.submit();</script>
 EOF;

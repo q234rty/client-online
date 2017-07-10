@@ -31,7 +31,7 @@ if($uname != '' && $hasuser){
 <div style="height: 100px;"></div>
 <div style="box-shadow: 0px 0px 100px #ccc;text-align: left;width: 500px;height: 300px;text-indent: 40px;" id="p">
 	<h1 style="padding:20px;">Client - Online</h1>
-	<form action="/index.php" method="post">
+	<form action="/" method="post">
 		<table>
 			<tr>
 				<td>User Name:</td>
@@ -56,7 +56,7 @@ if($uname != '' && $hasuser){
 					echo 'Password wrong!';
 			?></p></td></tr>
 			<tr>
-				<td><a href="/register.php">register</a></td>
+				<td><a href="/register">register</a></td>
 				<td><input type="submit" name="submit" value="Log in" class="but"></td>
 			</tr>
 		</table>
@@ -66,7 +66,7 @@ if($uname != '' && $hasuser){
 
 <?php if($rightpsw === $psw): ?>
 
-<form action="/main.php" method="post" name="dog">
+<form action="/main/" method="post" name="dog">
 	<input type="hidden" name="name" value="<?php echo $uname?>">
 </form><script type="text/javascript">document.dog.submit();</script>
 
