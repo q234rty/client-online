@@ -1,15 +1,24 @@
 <?php
+if(isset($_COOKIE['clientname']))
+	header("Location: /main/");
 $uname = $_POST['name'];
 $psw = $_POST['psw'];
-if($psw != '') $psw = hash("md5", hash("md5", $psw, False), False);
-$paspath = "psws/" . $uname . ".log";
-$rightpsw = 'FUCK_YOU!';
-$hasuser = file_exists($paspath);
-if($uname != '' && $hasuser){
-	$file = fopen($paspath, "r");
-	$rightpsw = fread($file, filesize($paspath));
-	fclose($file);
-}
+$warning = "Have a nice day!";
+if(!empty($uname) || !empty($psw))
+	if(!empty($uname) && !empty($psw)){
+		$paspath = "psws/{$uname}.log";
+		$hasuser = file_exists($paspath);
+		if($hasuser){
+			$psw = hash("md5", hash("md5", $psw, False), False);
+			$file = fopen($paspath, "r");
+			$rightpsw = json_decode(fread($file, filesize($paspath)));
+			fclose($file);
+			if($psw === $rightpsw -> psw){
+				setcookie("clientname", $uname, time()+3600);
+				header("Location: /main/");
+			} else $warning = "Password Wrong!";
+		} else $warning = "No such user!";
+	} else $warning = "fill the blanks!";
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +34,7 @@ if($uname != '' && $hasuser){
 		.but{background-color: #66ccff;border:0;width: 265px;height: 40px;font-size: 1.7em;font-weight: lighter;}
 		.but:hover{background-color: #55bbee;cursor: pointer;}
 	</style>
+	<link rel="icon" href="/favicon.ico">
 </head>
 <body>
 <center>
@@ -46,34 +56,15 @@ if($uname != '' && $hasuser){
 				</td>
 			</tr>
 			<tr><td colspan="2"><p style="height:20px;color:red;">
-			<?php
-			if($uname != '' || $psw != '')
-				if($uname == '')
-					echo 'Please enter your name!';
-				else if(!$hasuser)
-					echo 'No such user!';
-				else if($psw !== $rightpsw)
-					echo 'Password wrong!';
-			?></p></td></tr>
+			<?php echo $warning; ?>
+			</p></td></tr>
 			<tr>
-				<td><a href="/register">register</a></td>
+				<td><a href="/register.php">register</a></td>
 				<td><input type="submit" name="submit" value="Log in" class="but"></td>
 			</tr>
 		</table>
 	</form>
 
 </div></center>
-
-<?php if($rightpsw === $psw): ?>
-
-<form action="/main/" method="post" name="dog">
-	<input type="hidden" name="name" value="<?php echo $uname?>">
-</form><script type="text/javascript">document.dog.submit();</script>
-
-<?php elseif($uname != ''): ?>
-
-	<script type="text/javascript">document.getElementById('psw').focus();</script>
-
-<?php endif ?>
 </body>
 </html>

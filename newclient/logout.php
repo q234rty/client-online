@@ -1,0 +1,1 @@
+<?php setcookie("clientname", "", time()-3600); header("Location: /"); ?>

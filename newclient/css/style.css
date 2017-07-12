@@ -8,29 +8,29 @@ body{
 	background: url(/img/bg1.png) no-repeat center center fixed;
 	background-size: cover;
 }
-.init,#msg,.s{font-family: '微软雅黑';}
-.big,.name{
+*{font-family: 'Microsoft Yahei';}
+.big{
 	font-family: 'Copperplate Gothic';
 	font-weight: lighter;
 }
 .head{
-	width: 100%;
 	position: fixed;
 	top: 0;
+	width: 100%;
 	background-color: #fff;
-	box-shadow: 0px 0px 10px #222;
+	box-shadow: 0px 0px 10px #ccc;
 }
 .item{
 	padding-left:1.25rem;
 	padding-right:1.25rem;
-	line-height:2.4375rem;
+	line-height:2.8375rem;
 	margin: 0;
 }
 .tit{
 	font-family: 'Copperplate Gothic';
 	font-size: 2em;
 	font-weight: bold;
-	float: left;
+	display: inline-block;
 }
 .name{
 	float: right;
@@ -55,41 +55,13 @@ body{
 .name:hover:before{
 	opacity: 1;
 }
-.ops{
-	margin: 0;
-	padding: 0;
-	display: none;
-	background-color: #fff;
-}
-.ops li{
-	padding: 15px;
-	list-style-type: none;
-	font-family: 'Copperplate Gothic';
-	width: 150px;
-	position: relative;
-}
-.ops li:hover{
-	background-color: #eee;
-	cursor: pointer;
-}
-.ops li:before{
-	content: "";
-	position: absolute;
-	left: 0;
-	 top: 0;
-	 width: 5px;
-	height: 100%;
-	opacity: 0;
-}
-.ops li:hover:before{
-	background-color: #39C8BB;
-	opacity: 1;
-}
 .main{
 	text-align: left;
-	padding-top: 80px;
+	padding-top: 60px;
 	word-wrap: break-word;
 	white-space: pre-wrap;
+	width: 90%;
+	min-height: 100%;
 }
 .at{
 	text-decoration: none;
@@ -187,6 +159,7 @@ blockquote{
 	background-color: rgba(204, 204, 204, .5);
 	padding: 16px 40px 16px 40px;
 	border-left: 5px solid #39C8BB;
+	font-style: italic;
 }
 .toolbar{
 	float: left;
@@ -209,36 +182,10 @@ blockquote{
 	width: 30px;
 }
 .init h1,.init h2,.init h3,.init h4,.init h5,.init h6{
-	position: relative;
-	display: inline-block;
 	font-weight: lighter;
 	margin-bottom: 20px;
 	margin-top: 10px;
-}
-.init h1:after,.init h2:after,.init h3:after,.init h4:after,.init h5:after,.init h6:after{
-	content: "]";
-	position: absolute;
-	top: 0; right: 0;
-	opacity: 0;
-	transition: all .5s;
-}
-.init h1:before,.init h2:before,.init h3:before,.init h4:before,.init h5:before,.init h6:before{
-	content: "[";
-	position: absolute;
-	top: 0; left: 0;
-	opacity: 0;
-	transition: all .5s;
-}
-.init h1:hover:after,.init h2:hover:after,.init h3:hover:after,
-.init h4:hover:after,.init h5:hover:after,.init h6:hover:after{
-	right: -20px; opacity: 1;
-}
-.init h1:hover:before,.init h2:hover:before,.init h3:hover:before,
-.init h4:hover:before,.init h5:hover:before,.init h6:hover:before{
-	left: -20px; opacity: 1;
-}
-.init h1,.init h2,.init h3,
-.init h4,.init h5,.init h6{
+	padding-bottom: 5px;
 	border-bottom: 2px solid #777;
 }
 .win10_button{
@@ -260,3 +207,30 @@ blockquote{
 	outline-offset: 0px;
 	background-color: rgb(229, 241, 251);
 }
+#menu{
+	position: absolute;
+	margin-right: 20px;
+	right: 20px;
+	display: none;
+}
+.menu-bar{margin: 0;box-shadow: 0px 0px 10px #ccc;width: 200px;padding: 3px 0px 3px 0px;background-color: #fff;}
+.menu-bar li{list-style: none;position: relative;margin:0;padding: 0;cursor: pointer;}
+.menu-bar .link{padding: .5rem;border-left: 3px solid #fff;transition: all .3s;
+	margin: 0;display: block;color: black;text-decoration: none;}
+.menu-bar .link:hover{border-left: 3px solid #39C8BB;background-color: #eee;}
+.menu-bar .hr{background-color: #ccc;border-top: 3px solid #fff;border-bottom: 3px solid #fff;height: 2px;display: block;}
+.logout-icon:before{content: "\e844";padding-right: .5rem;}
+.profile-icon:before{content: "\e80b";padding-right: .5rem;}
+.notice-icon:before{content: "\e881";padding-right: .5rem;}
+.upload-icon:before{content: "\e82c";padding-right: .5rem;}
+.menu-icon-1:after{content: "\E85A";padding-left: .5rem;}
+.menu-icon-2:after{content: "\E857";padding-left: .5rem;}
+[class*="-icon"]:before,[class*="-icon"]:after{font-family: fontello;}
+#msg{
+	border: none; outline: none;
+	width: 100%; max-width: 100%;
+	height: 150px; float: top;
+	padding: 0; margin: 0;
+}
+html,body{height: 100%;}
+center,.main{min-height: 100%;}

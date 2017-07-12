@@ -1,15 +1,24 @@
-var name, op;
-var calc = function (str) {
-	str = marked(str, {sanitize: op}).replace(/>\s+</g, '><').replace(/\n/g, '<br>').replace(/(<br>)+$/g, '').replace(/@\w+ /g, function (a) {
-		var name = a.substr(1, a.length-2);
-		return '<a href="javascript:;" onclick="at(this)" class="at">'+name+'</a>&nbsp;';
-	})
-	return str;
-}
-var len = 1;
+
 $(document).ready(function () {
-	name = $('.name').html();
-	op = name != 'root';
+	var len = 1,
+		name = $('.name').html(),
+		level = 1;
+	$.post('/getuserprofile.php', {user: name}, function (ans) {
+		// alert(ans);
+		var k = ans.split('\n');
+		if(k == null) return;
+		level = parseInt(k[1]);
+	})
+	var calc = function (str) {
+		str = marked(str, {sanitize: (level < 5)}).replace(/>\s+</g, '><').replace(/\n/g, '<br>').replace(/(<br>)+$/g, '').replace(/@\w+ /g, function (a) {
+			var name = a.substr(1, a.length-2);
+			return '<a href="javascript:;" onclick="at(this)" class="at">'+name+'</a> ';
+		})
+		return str;
+	}
+	var $_ = function (id) {
+		return document.getElementById(id);
+	}
 	setInterval(function () {
 		$.post("/gets.php", {}, function (ans) {
 			if(typeof ans !== 'string')
@@ -36,9 +45,6 @@ $(document).ready(function () {
 		$('.notice').fadeIn(500);
 		localStorage.client_notice = new Date().getDate();
 	}
-	$('.name').click(function () {
-		$('.notice').fadeIn(500);
-	})
 	$('#sendcode').click(function () {
 		var $msg = $('#msg');
 		var kk = $msg.val();
@@ -79,22 +85,35 @@ $(document).ready(function () {
 	$('#sendimg').click(function () {
 		$('#msg').insertAtCaret('![]()', 1);
 	})
-	document.execCommand("BackgroundImageCache", false, true);
+	var openmenu = function () {
+		$_('a').className = $_('a').className.replace(/2/g, '1');
+		$('#menu').show(300);
+	}
+	var closemenu = function () {
+		$_('a').className = $_('a').className.replace(/1/g, '2');
+		$('#menu').hide(300);
+	}
+	$_('a').onclick = openmenu;
+	$_('menu').onmouseleave = closemenu;
+	$_('sb').onclick = function (str) {
+		if(level < 2) return alert('抱歉，您的账户已被封禁！');
+		var msgs = typeof str === 'string' ? str : calc($('#msg').val());
+		$('#msg').val('');
+		var kk = msgs.match(/<img/g);
+		if(kk !== null && kk.length > 20) return alert('图炮啊');
+		if(msgs.length > 100000) return alert('嘴炮啊');
+		$.post("/send.php", {
+			name: name, msg: msgs
+		})
+		return false;
+	}
+	$_('show-notice').onclick = function () {
+		$('.notice').fadeIn(500);
+		closemenu();
+	}
 })
 var at = function (a) {
 	var last = $('#msg').val();
 	$('#msg').val(last+'@'+$(a).html()+' ');
 	$('#msg').focus();
-}
-var send = function (str) {
-	var names = $('.name').html();
-	var msgs = typeof str === 'string' ? str : calc($('#msg').val());
-	$('#msg').val('');
-	var kk = msgs.match(/<img/g);
-	if(kk !== null && kk.length > 20) return alert('图炮啊');
-	if(msgs.length > 100000) return alert('嘴炮啊');
-	$.post("/send.php", {
-		name: names, msg: msgs
-	})
-	return false;
 }

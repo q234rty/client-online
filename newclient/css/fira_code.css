@@ -33,6 +33,13 @@
 	font-style: normal;
 }
 
+@font-face{
+	font-family: 'fontello';
+	src: url('/ttf/fontello.ttf');
+	font-weight: 500;
+	font-style: normal;
+}
+
 @keyframes hhh{
 	0%, 9%{background-image: url(/img/bg1.png);}
 	10%, 19%{background-image: url(/img/bg2.png);}

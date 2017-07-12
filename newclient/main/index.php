@@ -1,6 +1,9 @@
 <?php
-$name = $_POST['name'];
-if($name == '') header("Location: /");
+if(!isset($_COOKIE['clientname']))
+	header("Location: /");
+$name = $_COOKIE['clientname'];
+if(empty($name))
+	header("Location: /");
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,39 +22,45 @@ if($name == '') header("Location: /");
 </head>
 <body>
 <center>
-	<div style="position: relative;width: 90%;">
-		<div id="fuck_zyy" class="main"></div>
-		<div style="position: relative;background-color: #ccc;border: 1px solid #555;padding: 5px;margin-top: 10px;">
-			<textarea id="msg" style="width: 99%;max-width: 99%;height: 73px;float: top;" placeholder="Styling with Markdown is supported"></textarea>
-			<button onclick="send()" style="top: 5px;left: 0;height: 40px;width: 200px;float: right;font-size: 2em;" class="win10_button big">commit</button>
-			<ul class="toolbar">
-				<li id="sendimg"><img src="/img/send-img.svg"></li>
-				<li id="sendcode"><img src="/img/send-code.svg"></li>
-				<li id="huaji"><img src="/img/huaji.png"></li>
-			</ul>
-			<div style="height: 55px;"></div>
-		</div>
-		<div style="height: 100px;">
-<!--[if IE]>
-<script type="text/javascript">document.body.innerHTML='<p>你正在使用<strong>过时</strong>的浏览器，Client暂不支持。请 <a href="http://browsehappy.com/">升级浏览器</a>以获得更好的体验！</p>'</script>
-<![endif]-->
-		</div>
+	<div id="fuck_zyy" class="main"></div>
+	<div style="position: relative;margin-top: 10px;width: 90%;">
+		<textarea id="msg" placeholder="Styling with Markdown is supported"></textarea>
+		<ul class="toolbar">
+			<li id="sendimg"><img src="/img/send-img.svg"></li>
+			<li id="sendcode"><img src="/img/send-code.svg"></li>
+			<li id="huaji"><img src="/img/huaji.png"></li>
+		</ul>
+		<div style="height: 40px;width: 200px;float: right;font-size: 2em;margin: 0;" class="win10_button big" id="sb">commit</div>
 	</div>
 </center>
-<div class="head">
-	<div class="item tit">Client - Online</div>
-	<div class="item name"><?php echo $name?></div>
-</div>
+
 <div class="notice">
 	<h1>Notice</h1>
 	<div style="text-align: left;padding-left: 20px;">
-		<h2 style="margin: 0;">6.27 update</h2>
-		<p>又加了点css特效，新加了几张壁纸，设置为自动切换，希望大家喜欢⁄(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄</p>
-		<p>什么？听说你想盗图？我怎么可能会让你这么轻松就盗走？</p>
+	<?php readfile("../notice.txt"); ?>
 	</div>
 	<div style="position: absolute;top: 5px;right: 5px;">
 		<a href="javascript:;" onclick="$('.notice').fadeOut(500)">Close</a>
 	</div>
 </div>
+
+<div class="head">
+	<div class="item tit">Client - Online</div>
+	<div class="item name menu-icon-2" id="a"><?php echo $name?></div>
+	<div id="menu">
+		<ul class="menu-bar">
+			<li><a href="/profile/?user=<?php echo $name;?>" class="link profile-icon" target="_self">我的资料</a></li>
+			<li class="hr"></li>
+			<li class="link notice-icon" id="show-notice">查看公告</li>
+			<li><a href="/upload" class="link upload-icon">上传文件</a></li>
+			<li class="hr"></li>
+			<li><a href="/logout.php" class="link logout-icon" target="_self">登出</a></li>
+		</ul>
+	</div>
+</div>
+
+<!--[if IE]>
+<script type="text/javascript">document.body.innerHTML='<p>你正在使用<strong>过时</strong>的浏览器，Client暂不支持。请 <a href="http://browsehappy.com/">升级浏览器</a>以获得更好的体验！</p>'</script>
+<![endif]-->
 </body>
 </html>
