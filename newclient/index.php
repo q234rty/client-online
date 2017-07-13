@@ -3,7 +3,7 @@ if(isset($_COOKIE['clientname']))
 	header("Location: /main/");
 $uname = $_POST['name'];
 $psw = $_POST['psw'];
-$warning = "Have a nice day!";
+$warning = "为了显示头像，我需要收集邮箱，劳烦再一次重新注册（原帐号密码已清空）";
 if(!empty($uname) || !empty($psw))
 	if(!empty($uname) && !empty($psw)){
 		$paspath = "psws/{$uname}.log";

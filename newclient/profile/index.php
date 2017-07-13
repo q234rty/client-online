@@ -6,6 +6,7 @@ $email = $level = 0;
 if($hasuser){
 	$op = fopen($profile_path, "r");
 	$profile = json_decode(fread($op, filesize($profile_path)));
+	fclose($op);
 	$email = $profile -> email;
 	$level = $profile -> level;
 }

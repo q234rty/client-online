@@ -37,7 +37,7 @@ if(empty($name))
 <div class="notice">
 	<h1>Notice</h1>
 	<div style="text-align: left;padding-left: 20px;">
-	<?php readfile("../notice.txt"); ?>
+	<?php readfile("../notice.log"); ?>
 	</div>
 	<div style="position: absolute;top: 5px;right: 5px;">
 		<a href="javascript:;" onclick="$('.notice').fadeOut(500)">Close</a>

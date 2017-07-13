@@ -1,4 +1,0 @@
-<h2>7.12 update</h2>
-<p>更新了UI<br>
-增加了等级设定。lv4以上可发html，lv1为封禁用户，你们默认都是lv2<br>
-<del>我才不会告诉你lv3和lv2没两样，而且lv4和lv5除了发html就没其他用了</del></p>

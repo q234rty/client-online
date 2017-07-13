@@ -17,7 +17,7 @@ if(!empty($uname)){
 			header("Location: /main/");
 		} else $warning = "Two passwords are not the same.";
 	} else $warning = "Already has that user!";
-} else $warning = "Have a nice day :)";
+} else $warning = "我们会把密码加密保存，但不能保证绝对安全";
 ?>
 <!DOCTYPE html>
 <html>
