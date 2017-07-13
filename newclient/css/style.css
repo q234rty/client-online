@@ -8,7 +8,7 @@ body{
 	background: url(/img/bg1.png) no-repeat center center fixed;
 	background-size: cover;
 }
-*{font-family: 'Microsoft Yahei';}
+.name,#msg,.s{font-family: 'Microsoft Yahei';}
 .big{
 	font-family: 'Copperplate Gothic';
 	font-weight: lighter;
@@ -29,7 +29,7 @@ body{
 .tit{
 	font-family: 'Copperplate Gothic';
 	font-size: 2em;
-	font-weight: bold;
+	font-weight: lighter;
 	display: inline-block;
 }
 .name{
@@ -72,22 +72,13 @@ body{
 }
 .s{
 	position: relative;
+	border-top: 1px solid #ccc;
 	animation: fadein 1s;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
-.init{
-	padding-left: 20px;
-	padding-right: 20px;
-	padding-bottom: 10px;
+.init,.txt{
 	transition: all .5s;
-}
-.s:after{
-	content: "";
-	width: 100%;
-	height: 2px;
-	position: absolute;
-	bottom: 0; left: 0;
-	background: linear-gradient(to right, rgba(0, 0, 0, .6), rgba(255, 255, 255, 0));
-	border-radius: 100px;
 }
 .notice{
 	box-shadow: 0px 0px 100px #999;
@@ -152,7 +143,9 @@ a:hover{
 	background-color: #fff;
 }
 .init p{
-	margin: 0;
+	padding-top: 4.8px;
+	padding-bottom: 4.8px;
+	margin:0;
 }
 blockquote{
 	margin: 0;
@@ -189,23 +182,16 @@ blockquote{
 	border-bottom: 2px solid #777;
 }
 .win10_button{
-	outline: 1px solid rgb(137, 137, 137);
-	outline-offset: 0px;
-	border: none;
-	background-color: rgb(225, 225, 225);
-	margin: 10px;
+	background-color: #5f9fd6;
+	border-radius: 40px;
 	transition: all .3s;
-	text-align: center;
+	outline: none;
+	border:none;
 	cursor: pointer;
 }
-.win10_button:focus{
-	outline: 2px solid rgb(0, 120, 215);
-	outline-offset: -1px;
-}
 .win10_button:hover{
-	outline: 1px solid rgb(0, 120, 215);
-	outline-offset: 0px;
-	background-color: rgb(229, 241, 251);
+	background-color: #5faaea;
+	box-shadow: 0px 0px 4px #5faaea;
 }
 #menu{
 	position: absolute;
@@ -232,5 +218,25 @@ blockquote{
 	height: 150px; float: top;
 	padding: 0; margin: 0;
 }
-html,body{height: 100%;}
-center,.main{min-height: 100%;}
+.lv0{color: gray;}
+.lv1{color: blue;}
+.lv2{color: lime;}
+.lv3{color: red;}
+.lv4{color: purple;}
+.lv5{color: purple;}
+.tx{
+	border-radius: 60px;
+	width: 60px;
+	float: left;
+}
+.fq{
+	margin-left: 75px;
+}
+.ssss{
+	border-top: 1px solid #ccc;
+	padding-top: 20px;
+}
+.txt{
+	margin-bottom: 5px;
+}
+.tm{color: #aaa;padding-left: 5px;}

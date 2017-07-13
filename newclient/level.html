@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>等级说明</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<style type="text/css">
+		.ok{color: lime;}
+		.no{color: red;}
+		thead{background-color: #ccc;}
+		.t1{background-color: #eee;}
+		.t2{background-color: #fff;}
+		h1{font-weight: lighter;margin: 0;}
+		*{font-family: 'Microsoft Yahei';}
+	</style>
+</head>
+<body>
+<div style="margin: 7rem;margin-top: 5rem;">
+<h1>等级说明</h1>
+<ul>
+	<li>
+		LV5: <span class="lv5">超级管理员</span>
+		<p>网站的所有者</p>
+	</li>
+	<li>
+		LV4: <span class="lv4">管理员</span>
+		<p>高权限的用户</p>
+	</li>
+	<li>
+		LV3: <span class="lv3">高级用户</span>
+		<p><del>嘴炮</del></p>
+	</li>
+	<li>
+		LV2: <span class="lv2">中级用户</span>
+		<p>经常活跃在网站上</p>
+	</li>
+	<li>
+		LV1: <span class="lv1">普通用户</span>
+		<p>普通用户，可以通过积极发言升级</p>
+	</li>
+	<li>
+		LV0: <span class="lv0">封禁用户</span>
+		<p>被续了</p>
+	</li>
+</ul>
+<h1>权限列表</h1>
+<table style="width:100%;padding: 2rem;">
+	<thead>
+		<td>等级</td>
+		<td>发言</td>
+		<td>发HTML</td>
+	</thead>
+	<tr class="t1">
+		<td>LV5</td>
+		<td><span class="ok">OK</span></td>
+		<td><span class="ok">OK</span></td>
+	</tr>
+	<tr class="t2">
+		<td>LV4</td>
+		<td><span class="ok">OK</span></td>
+		<td><span class="ok">OK</span></td>
+	</tr>
+	<tr class="t1">
+		<td>LV3</td>
+		<td><span class="ok">OK</span></td>
+		<td><span class="no">NO</span></td>
+	</tr>
+	<tr class="t2">
+		<td>LV2</td>
+		<td><span class="ok">OK</span></td>
+		<td><span class="no">NO</span></td>
+	</tr>
+	<tr class="t1">
+		<td>LV1</td>
+		<td><span class="ok">OK</span></td>
+		<td><span class="no">NO</span></td>
+	</tr>
+	<tr class="t2">
+		<td>LV0</td>
+		<td><span class="no">NO</span></td>
+		<td><span class="no">NO</span></td>
+	</tr>
+</table>
+</div>
+</body>
+</html>

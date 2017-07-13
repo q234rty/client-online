@@ -3,18 +3,21 @@ $uname = $_POST['name'];
 $psw1 = $_POST['psw1'];
 $psw2 = $_POST['psw2'];
 $file = "psws/{$uname}.log";
-$warning = "";
 $email = $_POST['mail'];
+$warning = "";
+setcookie("clientname", "", time()-3600);
 if(!empty($uname)){
 	$hasuser = file_exists($file);
 	if(!$hasuser){
 		if($psw1 === $psw2){
-			setcookie("clientname", $uname, time()+3600);
-			$profile = array('psw'=>hash("md5", hash("md5", $psw1, False), False),'email'=>$email,'level'=>2);
-			$op = fopen($file, "w");
-			fwrite($op, json_encode($profile));
-			fclose($op);
-			header("Location: /main/");
+			if(!empty($email)){
+				setcookie("clientname", $uname, time()+3600);
+				$profile = array('psw'=>hash("md5", hash("md5", $psw1, False), False),'email'=>$email,'level'=>1);
+				$op = fopen($file, "w");
+				fwrite($op, json_encode($profile));
+				fclose($op);
+				header("Location: /main/");
+			} else $warning = "Enter your email!";
 		} else $warning = "Two passwords are not the same.";
 	} else $warning = "Already has that user!";
 } else $warning = "我们会把密码加密保存，但不能保证绝对安全";

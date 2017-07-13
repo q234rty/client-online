@@ -23,21 +23,21 @@ if(empty($name))
 <body>
 <center>
 	<div id="fuck_zyy" class="main"></div>
-	<div style="position: relative;margin-top: 10px;width: 90%;">
+	<div style="position: relative;margin-top: 10px;width: 90%;" class="ssss">
 		<textarea id="msg" placeholder="Styling with Markdown is supported"></textarea>
 		<ul class="toolbar">
 			<li id="sendimg"><img src="/img/send-img.svg"></li>
 			<li id="sendcode"><img src="/img/send-code.svg"></li>
 			<li id="huaji"><img src="/img/huaji.png"></li>
 		</ul>
-		<div style="height: 40px;width: 200px;float: right;font-size: 2em;margin: 0;" class="win10_button big" id="sb">commit</div>
+		<button style="height: 40px;width: 200px;float: right;font-size: 2em;margin: 0;" class="win10_button big" id="sb">commit</button>
 	</div>
 </center>
 
 <div class="notice">
 	<h1>Notice</h1>
 	<div style="text-align: left;padding-left: 20px;">
-	<?php readfile("../notice.log"); ?>
+	<?php readfile("../notice.txt"); ?>
 	</div>
 	<div style="position: absolute;top: 5px;right: 5px;">
 		<a href="javascript:;" onclick="$('.notice').fadeOut(500)">Close</a>

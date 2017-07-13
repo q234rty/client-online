@@ -1,20 +1,38 @@
-
 $(document).ready(function () {
-	var len = 1,
-		name = $('.name').html(),
-		level = 1;
-	$.post('/getuserprofile.php', {user: name}, function (ans) {
-		// alert(ans);
-		var k = ans.split('\n');
-		if(k == null) return;
-		level = parseInt(k[1]);
-	})
+	var levels = new Array();
+	var getlevel = function (name) {
+		if(!levels[name])
+			$.ajax({
+				type : "post",
+				url : "/getlevel.php",
+				data : "user=" + name,
+				async : false,
+				success : function(ans){
+					levels[name] = parseInt(ans)+1;
+				}
+			});
+		return levels[name]-1;
+	}
+	var emails = new Array();
+	var getemail = function (name) {
+		if(!emails[name])
+			$.ajax({
+				type : "post",
+				url : "/getemail.php",
+				data : "user=" + name,
+				async : false,
+				success : function(ans){
+					emails[name] = ans;
+				}
+			});
+		return emails[name];
+	}
+	var len = 1;
+	var name = $('.name').html();
+	var level = getlevel(name);
 	var calc = function (str) {
-		str = marked(str, {sanitize: (level < 5)}).replace(/>\s+</g, '><').replace(/\n/g, '<br>').replace(/(<br>)+$/g, '').replace(/@\w+ /g, function (a) {
-			var name = a.substr(1, a.length-2);
-			return '<a href="javascript:;" onclick="at(this)" class="at">'+name+'</a> ';
-		})
-		return str;
+		return marked(str, {sanitize: (level < 4)}).replace(/>\s+</g, '><')
+			.replace(/\n/g, '<br>').replace(/(<br>)+$/g, '');
 	}
 	var $_ = function (id) {
 		return document.getElementById(id);
@@ -29,12 +47,19 @@ $(document).ready(function () {
 				var szb = kkk[len++];
 				var newdiv = $('<div/>').addClass('s');
 				var time = szb.match(/^\[\d+:\d+:\d+\]/)[0];
-				newdiv.append($('<span/>').html(time))
 				var nm = szb.match(/\]\w+/)[0].substr(1);
+				var ctc = szb.substr(szb.indexOf('|')+1).replace(/<br>/g, "\n").replace(/@\w+ /g, function (dat) {
+					var name = dat.substr(1, dat.length-2);
+					var lv = getlevel(name);
+					return '<a href="javascript:;" onclick="at(this)" class="at lv'+lv+'">'+name+'</a> ';
+				});
 				var zyy = $('<a href="javascript:;" onclick="at(this)"></a>').addClass('at').html(nm);
-				newdiv.append(zyy);
-				var ctc = szb.substr(szb.indexOf('|')+1).replace(/<br>/g, '\n');
-				newdiv.append($('<div/>').addClass('init').html(ctc));
+				zyy.addClass('lv'+getlevel(nm));
+				newdiv.append($('<img/>').attr('src', 'https://cn.gravatar.com/avatar/'+getemail(nm)+'?d=mm')
+					.addClass('tx'));
+				newdiv.append($('<div/>').addClass('fq').append($('<div/>').append(zyy)
+					.append($('<span/>').html(time).addClass('tm')).addClass('txt')).append($('<div/>')
+					.addClass('init').html(ctc)))
 				$('#fuck_zyy').append(newdiv);
 				document.body.scrollTop = document.body.scrollHeight;
 				Prism.highlightAll();
@@ -96,7 +121,7 @@ $(document).ready(function () {
 	$_('a').onclick = openmenu;
 	$_('menu').onmouseleave = closemenu;
 	$_('sb').onclick = function (str) {
-		if(level < 2) return alert('抱歉，您的账户已被封禁！');
+		if(!level) return alert('抱歉，您的账户已被封禁！');
 		var msgs = typeof str === 'string' ? str : calc($('#msg').val());
 		$('#msg').val('');
 		var kk = msgs.match(/<img/g);

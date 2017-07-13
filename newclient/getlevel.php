@@ -5,7 +5,7 @@ if(!empty($_POST['user'])){
 		$file = fopen("psws/{$name}.log", "r");
 		$rd = json_decode(fread($file, filesize("psws/{$name}.log")));
 		fclose($file);
-		echo ($rd -> email) . "\n" . ($rd -> level);
-	}
-}
+		echo $rd -> level;
+	} else echo "0";
+} else echo "0";
 ?>
