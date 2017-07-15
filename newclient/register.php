@@ -44,26 +44,13 @@ if(!empty($uname)){
 			width: 250px;
 			font-family: 'Microsoft Yahei';
 		}
-		.but{
-			font-family: 'Copperplate Gothic';
-			background-color: #66ccff;
-			border: 0;
-			width: 265px;
-			height: 40px;
-			font-size: 1.7em;
-			font-weight: lighter;
-		}
-		.but:hover{
-			background-color: #55bbee;
-			cursor: pointer;
-		}
 		.p{font-family: 'Copperplate Gothic';}
 	</style>
 </head>
-<body>
+<body style="background-color: #eee;">
 <center>
 <div style="height: 100px;"></div>
-<div style="box-shadow: 0px 0px 100px #ccc;text-align: left;width: 580px;height: 370px;text-indent: 40px;" id="p">
+<div style="box-shadow: 0px 0px 100px #ccc;text-align: left;width: 580px;height: 370px;text-indent: 40px;background-color: #fff;" id="p">
 	<h1 style="padding:20px;">Register</h1>
 	<form action="/register.php" method="post">
 		<table>
@@ -95,7 +82,7 @@ if(!empty($uname)){
 			<?php echo $warning;?></p></td></tr>
 			<tr>
 				<td><a href="/" class="p">log in</a></td>
-				<td><input type="submit" name="submit" value="Register" class="but"></td>
+				<td><input type="submit" name="submit" value="Register" class="win10_button big" style="width: 265px;"></td>
 			</tr>
 		</table>
 	</form>

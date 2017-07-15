@@ -12,6 +12,7 @@ body{
 .big{
 	font-family: 'Copperplate Gothic';
 	font-weight: lighter;
+	font-size: 2rem;
 }
 .head{
 	position: fixed;

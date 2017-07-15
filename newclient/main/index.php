@@ -60,7 +60,7 @@ if(empty($name))
 </div>
 
 <!--[if IE]>
-<script type="text/javascript">document.body.innerHTML='<p>你正在使用<strong>过时</strong>的浏览器，Client暂不支持。请 <a href="http://browsehappy.com/">升级浏览器</a>以获得更好的体验！</p>'</script>
+<p>你正在使用<strong>过时</strong>的浏览器，Client暂不支持。请 <a href="http://browsehappy.com/">升级浏览器</a>以获得更好的体验！</p>
 <![endif]-->
 </body>
 </html>

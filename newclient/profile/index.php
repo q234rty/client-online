@@ -21,6 +21,7 @@ if($hasuser){
 	else echo "查无此人！";
 	?>
 	</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
 <div style="margin: 5rem;box-shadow: 0px 0px 10px #ccc;padding: 2rem;">
@@ -29,17 +30,17 @@ if($hasuser){
 		<p>邮箱：<?php echo $email; ?></p>
 		<p>等级：
 		<?php if ($level == 5): ?>
-			LV5 <span style="color: purple;">超级管理员</span>
+			LV5 <span class="lv5">超级管理员</span>
 		<?php elseif($level == 4): ?>
-			LV4 <span style="color: purple;">管理员</span>
+			LV4 <span class="lv4">管理员</span>
 		<?php elseif($level == 3): ?>
-			LV3 <span style="color: red;">高级用户</span>
+			LV3 <span class="lv3">高级用户</span>
 		<?php elseif($level == 2): ?>
-			LV2 <span style="color: lime;">中级用户</span>
+			LV2 <span class="lv2">中级用户</span>
 		<?php elseif($level == 1): ?>
-			LV1 <span style="color: blue;">普通用户</span>
+			LV1 <span class="lv1">普通用户</span>
 		<?php else: ?>
-			LV0 <span style="color: gray;">封禁用户</span>
+			LV0 <span class="lv0">封禁用户</span>
 		<?php endif ?>
 		<a href="/level.html" style="color:gray;font-size: x-small;">这是什么？</a>
 		</p>
