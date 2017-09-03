@@ -45,7 +45,7 @@ if(empty($name))
 </div>
 
 <div class="head">
-	<div class="item tit">Client - Online</div>
+	<div class="item tit">Client<!-- <span style="font-family: 'Courier New';font-size: 16px;">/ˈklaɪənt/</span> --> - Online</div>
 	<div class="item name menu-icon-2" id="a"><?php echo $name?></div>
 	<div id="menu">
 		<ul class="menu-bar">

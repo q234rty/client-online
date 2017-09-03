@@ -11,12 +11,14 @@ if(!empty($uname)){
 	if(!$hasuser){
 		if($psw1 === $psw2){
 			if(!empty($email)){
-				setcookie("clientname", $uname, time()+3600);
-				$profile = array('psw'=>hash("md5", hash("md5", $psw1, False), False),'email'=>$email,'level'=>1);
-				$op = fopen($file, "w");
-				fwrite($op, json_encode($profile));
-				fclose($op);
-				header("Location: /main/");
+				if(preg_match('/^[a-zA-Z]\w*$/', $uname)){
+					setcookie("clientname", $uname, time()+2592000);
+					$profile = array('psw'=>hash("md5", hash("md5", $psw1, False), False),'email'=>$email,'exp'=>0);
+					$op = fopen($file, "w");
+					fwrite($op, json_encode($profile));
+					fclose($op);
+					header("Location: /main/");
+				} else $warning = "Your name is not allowed.";
 			} else $warning = "Enter your email!";
 		} else $warning = "Two passwords are not the same.";
 	} else $warning = "Already has that user!";
@@ -38,11 +40,6 @@ if(!empty($uname)){
 			text-indent: 0;
 			height: 44px;
 			font-family: 'Copperplate Gothic';
-		}
-		input{
-			padding: 5px;
-			width: 250px;
-			font-family: 'Microsoft Yahei';
 		}
 		.p{font-family: 'Copperplate Gothic';}
 	</style>
@@ -73,7 +70,7 @@ if(!empty($uname)){
 				</td>
 			</tr>
 			<tr>
-				<td class="p">Email:</td>
+				<td class="p">Email(用于显示头像):</td>
 				<td>
 					<input type="email" name="mail">
 				</td>
@@ -82,7 +79,7 @@ if(!empty($uname)){
 			<?php echo $warning;?></p></td></tr>
 			<tr>
 				<td><a href="/" class="p">log in</a></td>
-				<td><input type="submit" name="submit" value="Register" class="win10_button big" style="width: 265px;"></td>
+				<td align="right"><input type="submit" name="submit" value="Register >" class="win10_button button_font"></td>
 			</tr>
 		</table>
 	</form>

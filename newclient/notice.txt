@@ -1,4 +1,8 @@
-<h2>7.13 update</h2>
-<p>又更新了UI(<del>狂抄VJ</del>)</p>
-<p>增加了等级权限系统，目前还不能自动升级，详情请见<a href="/level.html">这里</a></p>
-<p>没人发现右上角多了一个菜单栏么。。</p>
+﻿Welcome Back!<br>
+下面是一些下载链接<br>
+<a href="/files/Shadowsocks.exe">Shadowsocks</a><br>
+<a href="/files/Sublime Text Build 3126 Setup.exe">Sublime Text 3 Build 3126</a><br>
+<a href="/files/GitHubDesktopSetup.exe">Github Desktop</a><br>
+<a href="/files/node-v8.4.0-x64.exe">node.js</a><br>
+<a href="/files/NDP462-KB3151800-x86-x64-AllOS-ENU.exe">.NET framework 4.6.2</a>
+<a href="/files/HMCL-2.5.3.88.exe">HMCL-2.5.3.88</a>

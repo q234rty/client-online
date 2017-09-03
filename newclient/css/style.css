@@ -24,7 +24,7 @@ body{
 .item{
 	padding-left:1.25rem;
 	padding-right:1.25rem;
-	line-height:2.8375rem;
+	line-height: 50px;
 	margin: 0;
 }
 .tit{
@@ -39,6 +39,7 @@ body{
 	position: relative;
 	margin-right: 50px;
 	transition: all .3s;
+	display: inline-block;
 }
 .name:hover{
 	background-color: #eee;
@@ -147,6 +148,7 @@ a:hover{
 	padding-top: 4.8px;
 	padding-bottom: 4.8px;
 	margin:0;
+	/*min-height: 200px;*/
 }
 blockquote{
 	margin: 0;
@@ -184,7 +186,7 @@ blockquote{
 }
 .win10_button{
 	background-color: #5f9fd6;
-	border-radius: 40px;
+	/*border-radius: 40px;*/
 	transition: all .3s;
 	outline: none;
 	border:none;
@@ -220,11 +222,11 @@ blockquote{
 	padding: 0; margin: 0;
 }
 .lv0{color: gray;}
-.lv1{color: blue;}
-.lv2{color: lime;}
-.lv3{color: red;}
+.lv1{color: #66ccff;}
+.lv2{color: #39C5BB;}
+.lv3{color: #FFA500;}
 .lv4{color: purple;}
-.lv5{color: purple;}
+.lv5{color: purple;font-weight: bold;}
 .tx{
 	border-radius: 60px;
 	width: 60px;
@@ -241,3 +243,26 @@ blockquote{
 	margin-bottom: 5px;
 }
 .tm{color: #aaa;padding-left: 5px;}
+input[type="email"],input[type="text"],input[type="password"]{
+	border: none;
+	border-bottom: 1px solid #ccc;
+	font-family:"Mocrosoft Yahei";
+	transition: border-bottom-color .5s;
+	padding: 5px;
+	width: 250px;
+}
+input[type="email"]:focus,input[type="text"]:focus,input[type="password"]:focus{
+	outline:none;
+	border-bottom-color: #66ccff;
+}
+.button_font{
+	font-size: 20px;
+	display: inline-block;
+	padding: 5px 20px 5px 20px;
+}
+img[alt="rotate"]:hover{
+	transform: rotate(180deg);
+}
+img[alt="rotate"]{
+	transition: transform .5s;
+}

@@ -104,7 +104,7 @@ $(document).ready(function() {
 		}
 	})
 	$('#huaji').click(function() {
-		$('#msg').insertAtCaret('![滑稽](/img/huaji.png)');
+		$('#msg').insertAtCaret('![rotate](/img/huaji.png)');
 	})
 	$('#sendimg').click(function() {
 		$('#msg').insertAtCaret('![]()', 1);

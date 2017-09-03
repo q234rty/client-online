@@ -2,13 +2,37 @@
 $name = $_GET['user'];
 $profile_path = "../psws/{$name}.log";
 $hasuser = file_exists($profile_path);
-$email = $level = 0;
+$email = $exp = $level = $top = 0;
 if($hasuser){
 	$op = fopen($profile_path, "r");
 	$profile = json_decode(fread($op, filesize($profile_path)));
 	fclose($op);
 	$email = $profile -> email;
-	$level = $profile -> level;
+	$exp = $profile -> exp;
+	if($exp == 3.14) {
+		$level = 5;
+		$top = 10000;
+	}
+	else if($exp > 4500) {
+		$level = 4;
+		$top = 10000;
+	}
+	else if($exp > 1500) {
+		$level = 3;
+		$top = 4500;
+	}
+	else if($exp > 200) {
+		$level = 2;
+		$top = 1500;
+	}
+	else if($exp < 0) {
+		$level = 0;
+		$top = 1;
+	}
+	else {
+		$level = 1;
+		$top = 200;
+	}
 }
 ?>
 <!DOCTYPE html>
@@ -24,9 +48,12 @@ if($hasuser){
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
-<div style="margin: 5rem;box-shadow: 0px 0px 10px #ccc;padding: 2rem;">
+<div style="margin: 5rem;padding: 2rem;">
 	<?php if ($hasuser): ?>
 		<h1><?php echo $name; ?>的个人资料：</h1>
+		<?php if($level > 0): ?>
+		<div><span>经验：</span><div style="background-color: #ccc;width: 200px;height: 10px;display: inline-block;"><div style="background-color: #39C5BB;height: 10px;width: <?php echo $level == 5 ? 200 : min($exp/$top*200, 200); ?>px;"></div></div><span><?php echo ($level == 5 ? $top : $exp) . "/" . $top; ?></span></div>
+		<?php endif ?>
 		<p>邮箱：<?php echo $email; ?></p>
 		<p>等级：
 		<?php if ($level == 5): ?>
