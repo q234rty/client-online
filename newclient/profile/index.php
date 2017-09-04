@@ -46,11 +46,12 @@ if($hasuser){
 	?>
 	</title>
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<style type="text/css">h1{font-weight: lighter;}</style>
 </head>
 <body>
 <div style="margin: 5rem;padding: 2rem;">
 	<?php if ($hasuser): ?>
-		<h1><?php echo $name; ?>的个人资料：</h1>
+		<h1><span class="lv<?php echo $level; ?>"><?php echo $name; ?></span>のpersonal资料：</h1>
 		<?php if($level > 0): ?>
 		<div><span>经验：</span><div style="background-color: #ccc;width: 200px;height: 10px;display: inline-block;"><div style="background-color: #39C5BB;height: 10px;width: <?php echo $level == 5 ? 200 : min($exp/$top*200, 200); ?>px;"></div></div><span><?php echo ($level == 5 ? $top : $exp) . "/" . $top; ?></span></div>
 		<?php endif ?>

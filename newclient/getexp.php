@@ -6,6 +6,6 @@ if(!empty($_POST['user'])){
 		$rd = json_decode(fread($file, filesize("psws/{$name}.log")));
 		fclose($file);
 		echo $rd -> exp;
-	} else echo "0";
-} else echo "0";
+	} else echo "-1";
+} else echo "-1";
 ?>

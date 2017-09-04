@@ -15,7 +15,7 @@ fclose($file);
 $x = $rd -> exp;
 if($x == 3.14) exit;
 if($x < 0) exit;
-$rd -> exp = $x + 1;
+$rd -> exp = $x + $_POST['exp'];
 
 $op = fopen("psws/{$name}.log", "w");
 fwrite($op, json_encode($rd));
