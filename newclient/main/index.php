@@ -49,7 +49,7 @@ if(empty($name))
 	<div class="item name menu-icon-2" id="a"><?php echo $name?></div>
 	<div id="menu">
 		<ul class="menu-bar">
-			<li><a href="/profile/?user=<?php echo $name;?>" class="link profile-icon" target="_self">我的资料</a></li>
+			<li><a href="/profile/?user=<?php echo $name;?>" class="link profile-icon">我的资料</a></li>
 			<li class="hr"></li>
 			<li class="link notice-icon" id="show-notice">查看公告</li>
 			<li><a href="/upload" class="link upload-icon">上传文件</a></li>

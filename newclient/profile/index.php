@@ -41,39 +41,43 @@ if($hasuser){
 	<meta charset="utf-8">
 	<title>
 	<?php
-	if($hasuser) echo "{$name}的个人资料";
-	else echo "查无此人！";
+	if($hasuser) echo "{$name}の個人情報";
+	else echo "誰？";
 	?>
 	</title>
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
-	<style type="text/css">h1{font-weight: lighter;}</style>
+	<link rel="stylesheet" type="text/css" href="/css/fira_code.css">
+	<style type="text/css">h1{font-weight: lighter;}*{font-family: Microsoft Yahei;}td{padding: 0;}</style>
 </head>
 <body>
 <div style="margin: 5rem;padding: 2rem;">
 	<?php if ($hasuser): ?>
-		<h1><span class="lv<?php echo $level; ?>"><?php echo $name; ?></span>のpersonal资料：</h1>
-		<?php if($level > 0): ?>
-		<div><span>经验：</span><div style="background-color: #ccc;width: 200px;height: 10px;display: inline-block;"><div style="background-color: #39C5BB;height: 10px;width: <?php echo $level == 5 ? 200 : min($exp/$top*200, 200); ?>px;"></div></div><span><?php echo ($level == 5 ? $top : $exp) . "/" . $top; ?></span></div>
+		<h1><span class="lv<?php echo $level; ?>"><?php echo $name; ?></span>の個人情報：</h1>
+		<table>
+		<?php if($level > 0): ?><tr>
+		<td><span>経験：</span></td><td><div style="background-color: #ccc;width: 200px;height: 20px;display: inline-block;"><div style="background-color: #39C5BB;height: 20px;width: <?php echo $level == 5 ? 200 : min($exp/$top*200, 200); ?>px;"></div></div><span><?php echo ($level == 5 ? $top : min($exp, $top)) . "/" . $top; ?></span></td></tr>
 		<?php endif ?>
-		<p>邮箱：<?php echo $email; ?></p>
-		<p>等级：
+		<tr><td style="width: 70px;">
+		<span>メール：</span></td><td><span><?php echo $email; ?></span></td></tr><tr>
+		<td><span>レベル：</span></td><td><span>
 		<?php if ($level == 5): ?>
-			LV5 <span class="lv5">超级管理员</span>
+			<span class="lv5">LV5 スーパー管理者</span>
 		<?php elseif($level == 4): ?>
-			LV4 <span class="lv4">管理员</span>
+			<span class="lv4">LV4 管理者</span>
 		<?php elseif($level == 3): ?>
-			LV3 <span class="lv3">高级用户</span>
+			<span class="lv3">LV3 上級ユーザー</span>
 		<?php elseif($level == 2): ?>
-			LV2 <span class="lv2">中级用户</span>
+			<span class="lv2">LV2 中級ユーザー</span>
 		<?php elseif($level == 1): ?>
-			LV1 <span class="lv1">普通用户</span>
+			<span class="lv1">LV1 普通のユーザー</span>
 		<?php else: ?>
-			LV0 <span class="lv0">封禁用户</span>
+			<span class="lv0">LV0 禁止されたユーザー</span>
 		<?php endif ?>
-		<a href="/level.html" style="color:gray;font-size: x-small;">这是什么？</a>
-		</p>
+		<a href="/level.html" style="color:gray;font-size: x-small;">これは何ですか</a></span>
+		</span></tr>
+		</table>
 	<?php else: ?>
-		<h1>查无此人！</h1>
+		<h1>申し訳ありませんが、「<?php echo $name; ?>」というユーザーが見つかりません。</h1>
 	<?php endif ?>
 </div>
 </body>
