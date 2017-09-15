@@ -77,7 +77,7 @@ if($hasuser){
 		</span></tr>
 		</table>
 	<?php else: ?>
-		<h1>申し訳ありませんが、「<?php echo $name; ?>」というユーザーが見つかりません。</h1>
+		<h1><ruby><rb>申</rb><rt>もう</rt></ruby>し<ruby><rb>訳</rb><rt>わけ</rt></ruby>ありませんが、「<?php echo $name; ?>」というユーザーが<ruby><rb>見</rb><rt>み</rt>つかりません。</ruby></h1>
 	<?php endif ?>
 </div>
 </body>
