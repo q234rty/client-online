@@ -1,6 +1,8 @@
 # client-online
 
-![by-nc](https://swwind.github.io/img/cc-by-nc.svg)
+友链
+[![bilibili](https://swwind.github.io/img/huaji.png)](https://www.bilibili.com)
+
 基本功能开发完毕，辅助功能等待开发中。。。
 
 # 安装方法
